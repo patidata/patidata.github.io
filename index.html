@@ -1,0 +1,2065 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CréditoYa — Tu plata, cuando la necesitás</title>
+  <meta name="description" content="Préstamos de $50.000 a $500.000 con acreditación inmediata. Sin trámites, sin burocracia. Solicitá online en minutos." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ============================================================
+       SISTEMA DE DISEÑO — VARIABLES
+    ============================================================ */
+    :root {
+      --color-bg:        #06090F;
+      --color-surface:   #0E1420;
+      --color-card:      #131B2A;
+      --color-border:    #1E2D45;
+      --color-accent:    #00D4FF;
+      --color-accent2:   #0099CC;
+      --color-green:     #00E87A;
+      --color-text:      #F0F4FF;
+      --color-muted:     #7A8BA8;
+      --color-white:     #FFFFFF;
+
+      --font-display:    'Syne', sans-serif;
+      --font-body:       'DM Sans', sans-serif;
+
+      --radius-sm:       8px;
+      --radius-md:       16px;
+      --radius-lg:       24px;
+      --radius-xl:       32px;
+
+      --space-xs:        8px;
+      --space-sm:        16px;
+      --space-md:        24px;
+      --space-lg:        48px;
+      --space-xl:        80px;
+      --space-xxl:       120px;
+
+      --max-width:       1200px;
+      --transition:      0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* ============================================================
+       RESET & BASE
+    ============================================================ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background-color: var(--color-bg);
+      color: var(--color-text);
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+
+    /* ============================================================
+       LAYOUT UTILITIES
+    ============================================================ */
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 var(--space-md);
+    }
+
+    .section {
+      padding: var(--space-xl) 0;
+    }
+
+    .section--lg {
+      padding: var(--space-xxl) 0;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-lg);
+      align-items: center;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-md);
+    }
+
+    .grid-4 {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--space-md);
+    }
+
+    .text-center { text-align: center; }
+    .flex { display: flex; }
+    .flex-center { display: flex; align-items: center; justify-content: center; }
+    .flex-between { display: flex; align-items: center; justify-content: space-between; }
+    .gap-sm { gap: var(--space-sm); }
+    .gap-md { gap: var(--space-md); }
+
+    /* ============================================================
+       TIPOGRAFÍA
+    ============================================================ */
+    h1, h2, h3, h4 {
+      font-family: var(--font-display);
+      line-height: 1.15;
+      font-weight: 700;
+    }
+
+    .display-xl {
+      font-size: clamp(2.8rem, 6vw, 5.5rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.05;
+    }
+
+    .display-lg {
+      font-size: clamp(2rem, 4vw, 3.5rem);
+      font-weight: 700;
+      letter-spacing: -0.025em;
+    }
+
+    .display-md {
+      font-size: clamp(1.5rem, 2.5vw, 2.2rem);
+      font-weight: 700;
+    }
+
+    .text-accent { color: var(--color-accent); }
+    .text-green  { color: var(--color-green);  }
+    .text-muted  { color: var(--color-muted);  }
+
+    .label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--color-accent);
+    }
+
+    /* ============================================================
+       BOTONES
+    ============================================================ */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      font-family: var(--font-body);
+      font-size: 1rem;
+      font-weight: 600;
+      border-radius: 50px;
+      padding: 16px 32px;
+      border: none;
+      cursor: pointer;
+      transition: var(--transition);
+      white-space: nowrap;
+    }
+
+    .btn-primary {
+      background: var(--color-accent);
+      color: #000;
+    }
+    .btn-primary:hover {
+      background: #33DDFF;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 32px rgba(0, 212, 255, 0.4);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--color-text);
+      border: 1.5px solid var(--color-border);
+    }
+    .btn-secondary:hover {
+      border-color: var(--color-accent);
+      color: var(--color-accent);
+      transform: translateY(-2px);
+    }
+
+    .btn-large {
+      font-size: 1.1rem;
+      padding: 20px 44px;
+    }
+
+    .btn-full { width: 100%; }
+
+    /* ============================================================
+       EFECTOS VISUALES — FONDO
+    ============================================================ */
+    .glow-bg {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .glow-1 {
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(0,212,255,0.12) 0%, transparent 70%);
+      top: -200px;
+      right: -100px;
+    }
+
+    .glow-2 {
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(0,232,122,0.08) 0%, transparent 70%);
+      bottom: -100px;
+      left: -100px;
+    }
+
+    /* ============================================================
+       CARDS
+    ============================================================ */
+    .card {
+      background: var(--color-card);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      padding: var(--space-md);
+      transition: var(--transition);
+    }
+
+    .card:hover {
+      border-color: rgba(0, 212, 255, 0.3);
+      transform: translateY(-4px);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+    }
+
+    .card-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      margin-bottom: var(--space-sm);
+    }
+
+    .icon-bg-blue  { background: rgba(0,212,255,0.12); }
+    .icon-bg-green { background: rgba(0,232,122,0.12); }
+    .icon-bg-purple{ background: rgba(120,80,255,0.12); }
+    .icon-bg-orange{ background: rgba(255,140,50,0.12); }
+
+    /* ============================================================
+       BADGE / CHIP
+    ============================================================ */
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 14px;
+      border-radius: 50px;
+      font-size: 0.78rem;
+      font-weight: 600;
+    }
+
+    .badge-green {
+      background: rgba(0,232,122,0.12);
+      color: var(--color-green);
+      border: 1px solid rgba(0,232,122,0.25);
+    }
+
+    .badge-blue {
+      background: rgba(0,212,255,0.1);
+      color: var(--color-accent);
+      border: 1px solid rgba(0,212,255,0.2);
+    }
+
+    .dot {
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: currentColor;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+
+    /* ============================================================
+       NAVBAR
+    ============================================================ */
+    #navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      padding: 20px 0;
+      transition: var(--transition);
+    }
+
+    #navbar.scrolled {
+      background: rgba(6, 9, 15, 0.92);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--color-border);
+      padding: 14px 0;
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-logo {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--color-white);
+    }
+
+    .nav-logo span { color: var(--color-accent); }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: var(--space-md);
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--color-muted);
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: color var(--transition);
+    }
+
+    .nav-links a:hover { color: var(--color-text); }
+
+    .nav-cta {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    /* Mobile menu */
+    .nav-toggle {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: var(--color-text);
+    }
+
+    /* ============================================================
+       HERO SECTION
+    ============================================================ */
+    #hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      padding-top: 100px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: var(--space-xl);
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: var(--space-md);
+    }
+
+    .hero-title {
+      margin-bottom: var(--space-md);
+    }
+
+    .hero-title .highlight {
+      color: var(--color-accent);
+      position: relative;
+    }
+
+    .hero-subtitle {
+      font-size: 1.15rem;
+      color: var(--color-muted);
+      max-width: 520px;
+      margin-bottom: var(--space-lg);
+      line-height: 1.7;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: var(--space-sm);
+      flex-wrap: wrap;
+      margin-bottom: var(--space-lg);
+    }
+
+    .hero-stats {
+      display: flex;
+      gap: var(--space-lg);
+      padding-top: var(--space-md);
+      border-top: 1px solid var(--color-border);
+    }
+
+    .hero-stat .value {
+      font-family: var(--font-display);
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: var(--color-white);
+    }
+
+    .hero-stat .desc {
+      font-size: 0.8rem;
+      color: var(--color-muted);
+      margin-top: 2px;
+    }
+
+    /* Hero card flotante */
+    .hero-visual {
+      position: relative;
+    }
+
+    .hero-card-main {
+      background: var(--color-card);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-xl);
+      padding: 36px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-card-main::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--color-accent), var(--color-green));
+    }
+
+    .credit-display {
+      text-align: center;
+      padding: var(--space-md) 0;
+    }
+
+    .credit-amount {
+      font-family: var(--font-display);
+      font-size: 3.5rem;
+      font-weight: 800;
+      color: var(--color-white);
+      margin: 8px 0;
+    }
+
+    .credit-label {
+      font-size: 0.85rem;
+      color: var(--color-muted);
+    }
+
+    .slider-wrap {
+      margin: var(--space-sm) 0;
+    }
+
+    .slider-wrap label {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.82rem;
+      color: var(--color-muted);
+      margin-bottom: 8px;
+    }
+
+    input[type="range"] {
+      -webkit-appearance: none;
+      width: 100%;
+      height: 6px;
+      background: var(--color-border);
+      border-radius: 3px;
+      outline: none;
+    }
+
+    input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 22px;
+      height: 22px;
+      background: var(--color-accent);
+      border-radius: 50%;
+      cursor: pointer;
+      box-shadow: 0 0 12px rgba(0,212,255,0.5);
+    }
+
+    .credit-info-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: var(--space-sm);
+    }
+
+    .credit-info-item {
+      background: var(--color-surface);
+      border-radius: var(--radius-sm);
+      padding: 12px;
+      text-align: center;
+    }
+
+    .credit-info-item .val {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--color-text);
+    }
+
+    .credit-info-item .lbl {
+      font-size: 0.72rem;
+      color: var(--color-muted);
+      margin-top: 2px;
+    }
+
+    /* Floating badges on hero visual */
+    .float-badge {
+      position: absolute;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(14, 20, 32, 0.9);
+      border: 1px solid var(--color-border);
+      border-radius: 50px;
+      padding: 10px 16px;
+      font-size: 0.82rem;
+      font-weight: 500;
+      backdrop-filter: blur(10px);
+      white-space: nowrap;
+      animation: float 4s ease-in-out infinite;
+    }
+
+    .float-badge-1 { top: -20px; left: -20px; animation-delay: 0s; }
+    .float-badge-2 { bottom: 30px; right: -30px; animation-delay: 2s; }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+
+    /* ============================================================
+       SECCIÓN: CONFIANZA / LOGOS
+    ============================================================ */
+    #trust-bar {
+      border-top: 1px solid var(--color-border);
+      border-bottom: 1px solid var(--color-border);
+      padding: 28px 0;
+    }
+
+    .trust-bar-inner {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-xl);
+      flex-wrap: wrap;
+    }
+
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--color-muted);
+      font-size: 0.88rem;
+      font-weight: 500;
+    }
+
+    .trust-icon {
+      font-size: 1.3rem;
+      opacity: 0.7;
+    }
+
+    /* ============================================================
+       SECCIÓN: BENEFICIOS
+    ============================================================ */
+    #beneficios .section-header {
+      max-width: 600px;
+      margin: 0 auto var(--space-xl);
+    }
+
+    .benefit-card {
+      padding: 28px;
+    }
+
+    .benefit-card h3 {
+      font-size: 1.15rem;
+      margin: 14px 0 8px;
+    }
+
+    .benefit-card p {
+      font-size: 0.9rem;
+      color: var(--color-muted);
+      line-height: 1.6;
+    }
+
+    /* ============================================================
+       SECCIÓN: CÓMO FUNCIONA
+    ============================================================ */
+    #como-funciona {
+      background: var(--color-surface);
+      position: relative;
+    }
+
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--space-md);
+      position: relative;
+    }
+
+    .steps-grid::before {
+      content: '';
+      position: absolute;
+      top: 36px;
+      left: 12%;
+      right: 12%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--color-border), transparent);
+    }
+
+    .step-card {
+      text-align: center;
+      padding: 28px 20px;
+      position: relative;
+    }
+
+    .step-number {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--color-accent), #0088bb);
+      color: #000;
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto var(--space-sm);
+      position: relative;
+      z-index: 1;
+    }
+
+    .step-card h3 {
+      font-size: 1.05rem;
+      margin-bottom: 8px;
+    }
+
+    .step-card p {
+      font-size: 0.87rem;
+      color: var(--color-muted);
+    }
+
+    /* ============================================================
+       SECCIÓN: SIMULADOR
+    ============================================================ */
+    #simulador {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .simulator-wrap {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-xl);
+      align-items: center;
+    }
+
+    .simulator-card {
+      background: var(--color-card);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-xl);
+      padding: 40px;
+      position: relative;
+    }
+
+    .simulator-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: var(--radius-xl);
+      background: linear-gradient(135deg, rgba(0,212,255,0.05), transparent);
+      pointer-events: none;
+    }
+
+    .sim-result {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      padding: var(--space-md);
+      margin-top: var(--space-md);
+    }
+
+    .sim-result-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--color-border);
+      font-size: 0.9rem;
+    }
+
+    .sim-result-row:last-child { border-bottom: none; }
+    .sim-result-row .key { color: var(--color-muted); }
+    .sim-result-row .val { font-weight: 600; color: var(--color-text); }
+    .sim-result-row .val.highlight { color: var(--color-green); font-size: 1.1rem; }
+
+    .sim-form-group {
+      margin-bottom: var(--space-sm);
+    }
+
+    .sim-form-group label {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.85rem;
+      color: var(--color-muted);
+      margin-bottom: 10px;
+    }
+
+    .sim-form-group label span {
+      color: var(--color-accent);
+      font-weight: 600;
+    }
+
+    /* ============================================================
+       SECCIÓN: PRUEBA SOCIAL
+    ============================================================ */
+    #testimonios {
+      overflow: hidden;
+    }
+
+    .testimonios-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-md);
+    }
+
+    .testimonio-card {
+      padding: 28px;
+    }
+
+    .stars {
+      color: #FFB800;
+      font-size: 0.9rem;
+      margin-bottom: 14px;
+      letter-spacing: 2px;
+    }
+
+    .testimonio-text {
+      font-size: 0.95rem;
+      color: var(--color-muted);
+      line-height: 1.7;
+      margin-bottom: 20px;
+      font-style: italic;
+    }
+
+    .testimonio-author {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .avatar {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-display);
+      font-size: 1rem;
+      font-weight: 700;
+      color: #000;
+    }
+
+    .av-1 { background: linear-gradient(135deg, var(--color-accent), #0088bb); }
+    .av-2 { background: linear-gradient(135deg, var(--color-green), #00aa55); }
+    .av-3 { background: linear-gradient(135deg, #FF6B6B, #cc3333); }
+
+    .author-info .name {
+      font-weight: 600;
+      font-size: 0.92rem;
+    }
+    .author-info .role {
+      font-size: 0.78rem;
+      color: var(--color-muted);
+    }
+
+    /* ============================================================
+       SECCIÓN: OFERTA IRRESISTIBLE
+    ============================================================ */
+    #oferta {
+      background: var(--color-surface);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .oferta-inner {
+      position: relative;
+      z-index: 1;
+      max-width: 860px;
+      margin: 0 auto;
+    }
+
+    .oferta-card {
+      background: var(--color-card);
+      border: 1px solid rgba(0,212,255,0.25);
+      border-radius: var(--radius-xl);
+      padding: 56px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .oferta-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--color-accent), var(--color-green), var(--color-accent));
+      background-size: 200%;
+      animation: shimmer 3s linear infinite;
+    }
+
+    @keyframes shimmer {
+      0% { background-position: 0%; }
+      100% { background-position: 200%; }
+    }
+
+    .oferta-price {
+      margin: var(--space-md) 0;
+    }
+
+    .oferta-price .desde { font-size: 1rem; color: var(--color-muted); }
+    .oferta-price .amount {
+      font-family: var(--font-display);
+      font-size: clamp(3rem, 6vw, 5rem);
+      font-weight: 800;
+      color: var(--color-accent);
+      line-height: 1;
+      margin: 4px 0;
+    }
+    .oferta-price .hasta { font-size: 1rem; color: var(--color-muted); }
+
+    .oferta-benefits {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      margin: var(--space-md) 0;
+    }
+
+    .oferta-benefit {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(0,232,122,0.08);
+      border: 1px solid rgba(0,232,122,0.15);
+      border-radius: 50px;
+      padding: 8px 16px;
+      font-size: 0.88rem;
+      color: var(--color-text);
+    }
+
+    .oferta-benefit .icon { color: var(--color-green); }
+
+    .oferta-guarantee {
+      margin-top: var(--space-md);
+      font-size: 0.88rem;
+      color: var(--color-muted);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    /* ============================================================
+       SECCIÓN: SEGURIDAD
+    ============================================================ */
+    #seguridad .security-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-md);
+    }
+
+    .security-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      padding: 24px;
+    }
+
+    .security-icon {
+      font-size: 1.8rem;
+      flex-shrink: 0;
+    }
+
+    .security-item h4 {
+      font-size: 1rem;
+      margin-bottom: 6px;
+    }
+
+    .security-item p {
+      font-size: 0.88rem;
+      color: var(--color-muted);
+    }
+
+    /* ============================================================
+       SECCIÓN: FAQ
+    ============================================================ */
+    #faq {
+      background: var(--color-surface);
+    }
+
+    .faq-list {
+      max-width: 780px;
+      margin: 0 auto;
+    }
+
+    .faq-item {
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .faq-question {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 22px 0;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 1.02rem;
+      gap: 16px;
+      user-select: none;
+    }
+
+    .faq-question .icon {
+      font-size: 1.4rem;
+      color: var(--color-accent);
+      transition: transform var(--transition);
+      flex-shrink: 0;
+    }
+
+    .faq-item.open .faq-question .icon {
+      transform: rotate(45deg);
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease, padding 0.3s ease;
+    }
+
+    .faq-item.open .faq-answer {
+      max-height: 400px;
+      padding-bottom: 20px;
+    }
+
+    .faq-answer p {
+      color: var(--color-muted);
+      font-size: 0.95rem;
+      line-height: 1.7;
+    }
+
+    /* ============================================================
+       SECCIÓN: FORMULARIO
+    ============================================================ */
+    #solicitar {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .form-wrap {
+      max-width: 660px;
+      margin: 0 auto;
+    }
+
+    .form-card {
+      background: var(--color-card);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-xl);
+      padding: 48px;
+    }
+
+    .form-grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-sm);
+    }
+
+    .form-group {
+      margin-bottom: var(--space-sm);
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--color-muted);
+      margin-bottom: 8px;
+    }
+
+    .form-group input,
+    .form-group select {
+      width: 100%;
+      background: var(--color-surface);
+      border: 1.5px solid var(--color-border);
+      border-radius: var(--radius-sm);
+      padding: 14px 16px;
+      color: var(--color-text);
+      font-family: var(--font-body);
+      font-size: 0.95rem;
+      outline: none;
+      transition: var(--transition);
+      -webkit-appearance: none;
+    }
+
+    .form-group input::placeholder { color: #3A4A60; }
+
+    .form-group input:focus,
+    .form-group select:focus {
+      border-color: var(--color-accent);
+      box-shadow: 0 0 0 3px rgba(0,212,255,0.1);
+    }
+
+    .form-group input.error {
+      border-color: #FF5555;
+    }
+
+    .field-error {
+      display: none;
+      font-size: 0.78rem;
+      color: #FF6B6B;
+      margin-top: 4px;
+    }
+
+    .form-group input.error + .field-error { display: block; }
+
+    .form-success {
+      display: none;
+      text-align: center;
+      padding: 40px 20px;
+    }
+
+    .form-success .success-icon {
+      font-size: 3.5rem;
+      margin-bottom: 16px;
+      display: block;
+    }
+
+    .form-success h3 {
+      font-size: 1.5rem;
+      margin-bottom: 10px;
+    }
+
+    .form-success p {
+      color: var(--color-muted);
+    }
+
+    .form-note {
+      font-size: 0.78rem;
+      color: var(--color-muted);
+      text-align: center;
+      margin-top: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+
+    /* Progress steps in form */
+    .form-steps {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      margin-bottom: var(--space-md);
+    }
+
+    .form-step-dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: var(--color-border);
+      transition: var(--transition);
+    }
+
+    .form-step-dot.active { background: var(--color-accent); width: 24px; border-radius: 4px; }
+    .form-step-dot.done { background: var(--color-green); }
+
+    /* ============================================================
+       FOOTER
+    ============================================================ */
+    #footer {
+      background: var(--color-surface);
+      border-top: 1px solid var(--color-border);
+      padding: var(--space-xl) 0 var(--space-md);
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: var(--space-lg);
+      margin-bottom: var(--space-xl);
+    }
+
+    .footer-brand .logo {
+      font-family: var(--font-display);
+      font-size: 1.6rem;
+      font-weight: 800;
+      margin-bottom: var(--space-sm);
+    }
+
+    .footer-brand .logo span { color: var(--color-accent); }
+
+    .footer-brand p {
+      font-size: 0.88rem;
+      color: var(--color-muted);
+      line-height: 1.7;
+      max-width: 280px;
+    }
+
+    .footer-col h5 {
+      font-family: var(--font-display);
+      font-size: 0.9rem;
+      font-weight: 700;
+      margin-bottom: var(--space-sm);
+      color: var(--color-text);
+    }
+
+    .footer-col ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .footer-col ul a {
+      font-size: 0.88rem;
+      color: var(--color-muted);
+      transition: color var(--transition);
+    }
+
+    .footer-col ul a:hover { color: var(--color-accent); }
+
+    .footer-bottom {
+      padding-top: var(--space-md);
+      border-top: 1px solid var(--color-border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .footer-bottom p {
+      font-size: 0.8rem;
+      color: var(--color-muted);
+    }
+
+    .footer-legal {
+      display: flex;
+      gap: var(--space-md);
+    }
+
+    .footer-legal a {
+      font-size: 0.8rem;
+      color: var(--color-muted);
+      transition: color var(--transition);
+    }
+
+    .footer-legal a:hover { color: var(--color-text); }
+
+    /* ============================================================
+       STICKY CTA BAR (mobile)
+    ============================================================ */
+    .sticky-cta {
+      display: none;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(6, 9, 15, 0.95);
+      backdrop-filter: blur(20px);
+      border-top: 1px solid var(--color-border);
+      padding: 16px var(--space-md);
+      z-index: 90;
+    }
+
+    /* ============================================================
+       ANIMACIONES DE ENTRADA
+    ============================================================ */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .fade-up:nth-child(2) { transition-delay: 0.1s; }
+    .fade-up:nth-child(3) { transition-delay: 0.2s; }
+    .fade-up:nth-child(4) { transition-delay: 0.3s; }
+
+    /* ============================================================
+       SECCIÓN HEADER GENÉRICO
+    ============================================================ */
+    .section-header {
+      text-align: center;
+      margin-bottom: var(--space-xl);
+    }
+
+    .section-header .label {
+      margin-bottom: 12px;
+    }
+
+    .section-header h2 {
+      margin-bottom: 16px;
+    }
+
+    .section-header p {
+      font-size: 1.05rem;
+      color: var(--color-muted);
+      max-width: 540px;
+      margin: 0 auto;
+      line-height: 1.7;
+    }
+
+    /* ============================================================
+       RESPONSIVE
+    ============================================================ */
+    @media (max-width: 1024px) {
+      .hero-grid,
+      .simulator-wrap { grid-template-columns: 1fr; }
+      .hero-visual { display: none; }
+      .grid-4, .steps-grid { grid-template-columns: repeat(2, 1fr); }
+      .steps-grid::before { display: none; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .oferta-card { padding: 36px 28px; }
+      .form-card { padding: 32px 24px; }
+    }
+
+    @media (max-width: 768px) {
+      :root {
+        --space-xl: 56px;
+        --space-xxl: 80px;
+      }
+
+      .nav-links, .nav-cta .btn-secondary { display: none; }
+      .nav-toggle { display: block; }
+
+      .grid-2, .grid-3, .testimonios-grid,
+      .security-grid, .form-grid-2 { grid-template-columns: 1fr; }
+
+      .grid-4, .steps-grid { grid-template-columns: 1fr 1fr; }
+
+      .hero-stats { gap: var(--space-md); }
+
+      .trust-bar-inner { gap: var(--space-md); }
+
+      .footer-grid { grid-template-columns: 1fr; }
+      .footer-bottom { flex-direction: column; text-align: center; }
+
+      .sticky-cta { display: block; }
+
+      body { padding-bottom: 88px; }
+
+      .oferta-benefits { gap: 8px; }
+    }
+
+    @media (max-width: 480px) {
+      .hero-actions { flex-direction: column; }
+      .hero-actions .btn { width: 100%; text-align: center; }
+      .grid-4, .steps-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ============================================================
+       NAVBAR
+  ============================================================ -->
+  <nav id="navbar" role="navigation" aria-label="Navegación principal">
+    <div class="container">
+      <div class="nav-inner">
+        <a href="#" class="nav-logo" aria-label="Inicio">Crédito<span>Ya</span></a>
+        <ul class="nav-links">
+          <li><a href="#como-funciona">Cómo funciona</a></li>
+          <li><a href="#simulador">Simular crédito</a></li>
+          <li><a href="#faq">Preguntas frecuentes</a></li>
+          <li><a href="#seguridad">Seguridad</a></li>
+        </ul>
+        <div class="nav-cta">
+          <a href="#solicitar" class="btn btn-secondary" style="padding:12px 24px;font-size:0.9rem;">Iniciar sesión</a>
+          <a href="#solicitar" class="btn btn-primary" style="padding:12px 24px;font-size:0.9rem;">Pedí tu crédito</a>
+        </div>
+        <button class="nav-toggle" aria-label="Abrir menú" onclick="toggleMenu()">
+          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path d="M3 12h18M3 6h18M3 18h18"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ============================================================
+       HERO SECTION
+  ============================================================ -->
+  <section id="hero" aria-label="Sección principal">
+    <div class="glow-bg glow-1"></div>
+    <div class="glow-bg glow-2"></div>
+    <div class="container">
+      <div class="hero-grid">
+
+        <!-- Copy lado izquierdo -->
+        <div class="hero-content">
+          <div class="hero-eyebrow">
+            <div class="badge badge-green">
+              <span class="dot"></span>
+              Acreditación inmediata
+            </div>
+          </div>
+
+          <h1 class="display-xl hero-title">
+            Tu plata,<br>
+            <span class="highlight">cuando<br>la necesitás</span>
+          </h1>
+
+          <p class="hero-subtitle">
+            Préstamos de $50.000 a $500.000 con acreditación el mismo día. Sin papelerío, sin vueltas, 100% online.
+          </p>
+
+          <div class="hero-actions">
+            <a href="#solicitar" class="btn btn-primary btn-large">
+              <span>Pedí tu crédito</span>
+              <span>→</span>
+            </a>
+            <a href="#simulador" class="btn btn-secondary btn-large">
+              Simular monto
+            </a>
+          </div>
+
+          <div class="hero-stats">
+            <div class="hero-stat">
+              <div class="value">+15.000</div>
+              <div class="desc">personas ayudadas</div>
+            </div>
+            <div class="hero-stat">
+              <div class="value">2 min</div>
+              <div class="desc">para solicitar</div>
+            </div>
+            <div class="hero-stat">
+              <div class="value">24hs</div>
+              <div class="desc">acreditación máx.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Visual lado derecho — Simulador Hero -->
+        <div class="hero-visual">
+          <div class="float-badge float-badge-1">
+            ✅ <span>Pre-aprobado al instante</span>
+          </div>
+          <div class="hero-card-main">
+            <div class="credit-display">
+              <div class="credit-label">Cuánto necesitás</div>
+              <div class="credit-amount" id="hero-amount">$150.000</div>
+              <div class="credit-label">en pesos argentinos</div>
+            </div>
+            <div class="slider-wrap">
+              <label>
+                <span>$50.000</span>
+                <span>$500.000</span>
+              </label>
+              <input type="range" min="50000" max="500000" step="5000" value="150000"
+                     id="hero-slider" aria-label="Seleccioná el monto" />
+            </div>
+            <div class="credit-info-row">
+              <div class="credit-info-item">
+                <div class="val" id="hero-cuota">$10.200</div>
+                <div class="lbl">Cuota estimada</div>
+              </div>
+              <div class="credit-info-item">
+                <div class="val">12 cuotas</div>
+                <div class="lbl">Plazo máximo</div>
+              </div>
+            </div>
+            <a href="#solicitar" class="btn btn-primary btn-full" style="margin-top:20px;">
+              Solicitar ahora →
+            </a>
+          </div>
+          <div class="float-badge float-badge-2">
+            🔒 <span>100% seguro</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       TRUST BAR
+  ============================================================ -->
+  <div id="trust-bar" aria-label="Indicadores de confianza">
+    <div class="container">
+      <div class="trust-bar-inner">
+        <div class="trust-item">
+          <span class="trust-icon">🏦</span>
+          <span>Supervisado por el BCRA</span>
+        </div>
+        <div class="trust-item">
+          <span class="trust-icon">🔒</span>
+          <span>Datos protegidos SSL 256-bit</span>
+        </div>
+        <div class="trust-item">
+          <span class="trust-icon">⚡</span>
+          <span>Resolución en 24 horas</span>
+        </div>
+        <div class="trust-item">
+          <span class="trust-icon">📱</span>
+          <span>100% digital, sin turnos</span>
+        </div>
+        <div class="trust-item">
+          <span class="trust-icon">⭐</span>
+          <span>4.8/5 · +2.000 reseñas</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       BENEFICIOS
+  ============================================================ -->
+  <section id="beneficios" class="section" aria-label="Beneficios">
+    <div class="container">
+      <div class="section-header">
+        <div class="label">Por qué elegirnos</div>
+        <h2 class="display-md">Rápido, simple y sin sorpresas</h2>
+        <p>Diseñamos cada paso para que puedas resolver tu urgencia sin perder tiempo ni completar papeles interminables.</p>
+      </div>
+      <div class="grid-3">
+        <div class="card benefit-card fade-up">
+          <div class="card-icon icon-bg-blue">⚡</div>
+          <h3>Acreditación el mismo día</h3>
+          <p>Una vez aprobado tu crédito, el dinero cae en tu cuenta en cuestión de horas. Sin esperas innecesarias.</p>
+        </div>
+        <div class="card benefit-card fade-up">
+          <div class="card-icon icon-bg-green">📋</div>
+          <h3>Sin papelerío</h3>
+          <p>Solo tu DNI y tu cuenta bancaria. Nada de sueldos de recibo, garantías ni avales. El proceso es 100% online.</p>
+        </div>
+        <div class="card benefit-card fade-up">
+          <div class="card-icon icon-bg-purple">💰</div>
+          <h3>Cuotas que se adaptan</h3>
+          <p>Elegís el monto y las cuotas que te convienen. Calculá en segundos lo que vas a pagar, sin letras chicas.</p>
+        </div>
+        <div class="card benefit-card fade-up">
+          <div class="card-icon icon-bg-orange">🛡️</div>
+          <h3>Cero costos ocultos</h3>
+          <p>Lo que te mostramos en el simulador es lo que pagás. Transparencia total, sin cargos inesperados.</p>
+        </div>
+        <div class="card benefit-card fade-up">
+          <div class="card-icon icon-bg-blue">📱</div>
+          <h3>Desde tu celular</h3>
+          <p>Solicitá, seguí tu crédito y manejá todo desde donde estés. No hace falta que vayas a ningún lado.</p>
+        </div>
+        <div class="card benefit-card fade-up">
+          <div class="card-icon icon-bg-green">🤝</div>
+          <h3>Atención real</h3>
+          <p>Si tenés dudas, te atendemos. Personas reales listos para ayudarte a resolver lo que necesitás.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       CÓMO FUNCIONA
+  ============================================================ -->
+  <section id="como-funciona" class="section" aria-label="Cómo funciona">
+    <div class="container">
+      <div class="section-header">
+        <div class="label">Proceso</div>
+        <h2 class="display-md">4 pasos y listo</h2>
+        <p>Sin turnos, sin filas, sin papelerío. Todo desde tu celular o computadora, en minutos.</p>
+      </div>
+      <div class="steps-grid">
+        <div class="card step-card fade-up">
+          <div class="step-number">1</div>
+          <h3>Simulá tu crédito</h3>
+          <p>Elegí el monto y las cuotas. Ves en segundos lo que vas a pagar sin ningún compromiso.</p>
+        </div>
+        <div class="card step-card fade-up">
+          <div class="step-number">2</div>
+          <h3>Completá tus datos</h3>
+          <p>Solo DNI y datos bancarios. 2 minutos. Fácil y seguro.</p>
+        </div>
+        <div class="card step-card fade-up">
+          <div class="step-number">3</div>
+          <h3>Recibí la aprobación</h3>
+          <p>Analizamos tu solicitud y te respondemos rápido. Sin vueltas ni esperas largas.</p>
+        </div>
+        <div class="card step-card fade-up">
+          <div class="step-number">4</div>
+          <h3>El dinero en tu cuenta</h3>
+          <p>Una vez aprobado, acreditamos el dinero el mismo día. Así de simple.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SIMULADOR DE CRÉDITO
+  ============================================================ -->
+  <section id="simulador" class="section section--lg" aria-label="Simulador de crédito">
+    <div class="glow-bg glow-1" style="opacity:0.6;"></div>
+    <div class="container" style="position:relative;z-index:1;">
+      <div class="simulator-wrap">
+
+        <div>
+          <div class="label" style="margin-bottom:12px;">Simulador</div>
+          <h2 class="display-md" style="margin-bottom:16px;">Calculá tu cuota antes de pedir</h2>
+          <p style="color:var(--color-muted);font-size:1.05rem;line-height:1.7;margin-bottom:var(--space-lg);">
+            Jugá con el monto y las cuotas hasta encontrar lo que te queda cómodo. Sin compromiso, sin registrarte.
+          </p>
+          <div class="badge badge-blue" style="margin-bottom:var(--space-sm);">
+            ✔ Resultado al instante
+          </div><br>
+          <div class="badge badge-green">
+            ✔ Sin impacto en tu historial crediticio
+          </div>
+        </div>
+
+        <div class="simulator-card">
+          <div class="sim-form-group">
+            <label>¿Cuánto necesitás? <span id="sim-monto-label">$200.000</span></label>
+            <input type="range" min="50000" max="500000" step="5000" value="200000"
+                   id="sim-slider" aria-label="Monto del crédito" />
+          </div>
+          <div class="sim-form-group" style="margin-top:var(--space-sm);">
+            <label>¿En cuántas cuotas? <span id="sim-cuotas-label">12 cuotas</span></label>
+            <input type="range" min="3" max="24" step="3" value="12"
+                   id="sim-cuotas" aria-label="Cantidad de cuotas" />
+          </div>
+          <div class="sim-result">
+            <div class="sim-result-row">
+              <span class="key">Monto solicitado</span>
+              <span class="val" id="sim-r-monto">$200.000</span>
+            </div>
+            <div class="sim-result-row">
+              <span class="key">Cantidad de cuotas</span>
+              <span class="val" id="sim-r-cuotas">12 cuotas</span>
+            </div>
+            <div class="sim-result-row">
+              <span class="key">TNA referencial</span>
+              <span class="val">120%</span>
+            </div>
+            <div class="sim-result-row">
+              <span class="key">Cuota estimada</span>
+              <span class="val highlight" id="sim-r-cuota">$27.300</span>
+            </div>
+          </div>
+          <a href="#solicitar" class="btn btn-primary btn-full" style="margin-top:var(--space-sm);">
+            Quiero este crédito →
+          </a>
+          <p style="font-size:0.75rem;color:var(--color-muted);text-align:center;margin-top:10px;">
+            *Valores referenciales. La cuota final se informa antes de confirmar.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       TESTIMONIOS
+  ============================================================ -->
+  <section id="testimonios" class="section" aria-label="Opiniones de clientes">
+    <div class="container">
+      <div class="section-header">
+        <div class="label">Lo que dicen nuestros clientes</div>
+        <h2 class="display-md">+15.000 personas ya resolvieron su urgencia</h2>
+      </div>
+      <div class="testimonios-grid">
+        <div class="card testimonio-card fade-up">
+          <div class="stars">★★★★★</div>
+          <p class="testimonio-text">"Necesitaba plata urgente para arreglar el auto y lo resolví ese mismo día. Jamás pensé que fuera tan fácil. En serio, sin papelería ni nada."</p>
+          <div class="testimonio-author">
+            <div class="avatar av-1">MB</div>
+            <div class="author-info">
+              <div class="name">Marcos B.</div>
+              <div class="role">Empleado, Buenos Aires</div>
+            </div>
+          </div>
+        </div>
+        <div class="card testimonio-card fade-up">
+          <div class="stars">★★★★★</div>
+          <p class="testimonio-text">"Me salvó cuando tuve un gasto médico inesperado. El proceso fue clarito, sin letra chica. En pocas horas tenía el dinero en mi cuenta."</p>
+          <div class="testimonio-author">
+            <div class="avatar av-2">LC</div>
+            <div class="author-info">
+              <div class="name">Laura C.</div>
+              <div class="role">Comerciante, Córdoba</div>
+            </div>
+          </div>
+        </div>
+        <div class="card testimonio-card fade-up">
+          <div class="stars">★★★★☆</div>
+          <p class="testimonio-text">"Lo pedí desde el celu en el colectivo, ja. Me aprobaron rápido y sin complicaciones. Una herramienta muy útil para momentos difíciles."</p>
+          <div class="testimonio-author">
+            <div class="avatar av-3">RP</div>
+            <div class="author-info">
+              <div class="name">Rodrigo P.</div>
+              <div class="role">Docente, Rosario</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       OFERTA IRRESISTIBLE
+  ============================================================ -->
+  <section id="oferta" class="section section--lg" aria-label="Nuestra oferta">
+    <div class="glow-bg" style="width:700px;height:700px;background:radial-gradient(circle,rgba(0,232,122,0.08) 0%,transparent 70%);top:50%;left:50%;transform:translate(-50%,-50%);"></div>
+    <div class="container">
+      <div class="oferta-inner">
+        <div class="oferta-card">
+          <div class="label" style="margin-bottom:12px;">Nuestra oferta</div>
+          <h2 class="display-md" style="margin-bottom:8px;">Crédito con acreditación inmediata</h2>
+          <p style="color:var(--color-muted);max-width:480px;margin:0 auto;">
+            Sin vueltas, sin demoras. El dinero que necesitás llega a tu cuenta el mismo día.
+          </p>
+          <div class="oferta-price">
+            <div class="desde">Desde</div>
+            <div class="amount">$50.000</div>
+            <div class="hasta">hasta $500.000 — en cuotas a tu medida</div>
+          </div>
+          <div class="oferta-benefits">
+            <div class="oferta-benefit"><span class="icon">✓</span> Aprobación en minutos</div>
+            <div class="oferta-benefit"><span class="icon">✓</span> Sin garante</div>
+            <div class="oferta-benefit"><span class="icon">✓</span> Sin recibo de sueldo</div>
+            <div class="oferta-benefit"><span class="icon">✓</span> 100% online</div>
+            <div class="oferta-benefit"><span class="icon">✓</span> Sin costos ocultos</div>
+            <div class="oferta-benefit"><span class="icon">✓</span> Cuotas fijas</div>
+          </div>
+          <a href="#solicitar" class="btn btn-primary btn-large" style="margin-top:var(--space-md);">
+            Pedí tu crédito ahora →
+          </a>
+          <div class="oferta-guarantee">
+            🔒 Si no te aprobamos, no pagás absolutamente nada
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SEGURIDAD
+  ============================================================ -->
+  <section id="seguridad" class="section" aria-label="Seguridad y confianza">
+    <div class="container">
+      <div class="section-header">
+        <div class="label">Tu seguridad</div>
+        <h2 class="display-md">Tu información está protegida</h2>
+        <p>Cumplimos con todas las normativas vigentes y utilizamos tecnología de nivel bancario para cuidar tus datos.</p>
+      </div>
+      <div class="security-grid">
+        <div class="card security-item fade-up">
+          <span class="security-icon">🔐</span>
+          <div>
+            <h4>Encriptación SSL 256-bit</h4>
+            <p>El mismo nivel de seguridad que usan los bancos. Tus datos viajan cifrados en todo momento.</p>
+          </div>
+        </div>
+        <div class="card security-item fade-up">
+          <span class="security-icon">🏛️</span>
+          <div>
+            <h4>Registrado y supervisado</h4>
+            <p>Operamos bajo las regulaciones del Banco Central de la República Argentina (BCRA).</p>
+          </div>
+        </div>
+        <div class="card security-item fade-up">
+          <span class="security-icon">🛡️</span>
+          <div>
+            <h4>Privacidad de datos</h4>
+            <p>Tus datos personales nunca se comparten con terceros sin tu consentimiento. Cumplimos la Ley 25.326.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       FAQ
+  ============================================================ -->
+  <section id="faq" class="section" aria-label="Preguntas frecuentes">
+    <div class="container">
+      <div class="section-header">
+        <div class="label">FAQ</div>
+        <h2 class="display-md">Tus dudas, resueltas</h2>
+      </div>
+      <div class="faq-list">
+
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFaq(this)" role="button" tabindex="0" aria-expanded="false">
+            <span>¿Cuánto tiempo tarda en acreditarse el dinero?</span>
+            <span class="icon">+</span>
+          </div>
+          <div class="faq-answer">
+            <p>Una vez aprobado tu crédito, el dinero se acredita en tu cuenta bancaria el mismo día. En algunos casos puede demorar hasta 24 horas hábiles según el banco receptor.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFaq(this)" role="button" tabindex="0" aria-expanded="false">
+            <span>¿Qué documentos necesito para solicitar?</span>
+            <span class="icon">+</span>
+          </div>
+          <div class="faq-answer">
+            <p>Solo necesitás tu DNI vigente y tus datos bancarios (CBU o CVU). No pedimos recibo de sueldo, garante ni ningún otro documento adicional.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFaq(this)" role="button" tabindex="0" aria-expanded="false">
+            <span>¿Puedo pedir un crédito si tengo deudas?</span>
+            <span class="icon">+</span>
+          </div>
+          <div class="faq-answer">
+            <p>Analizamos cada caso de forma individual. Tener deudas no significa que automáticamente te rechacemos. Enviá tu solicitud y te respondemos con honestidad.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFaq(this)" role="button" tabindex="0" aria-expanded="false">
+            <span>¿Hay costos ocultos?</span>
+            <span class="icon">+</span>
+          </div>
+          <div class="faq-answer">
+            <p>No. Lo que ves en el simulador es lo que pagás. Antes de confirmar el crédito te mostramos el detalle completo: monto, cuotas, TNA y CFT. Sin sorpresas.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFaq(this)" role="button" tabindex="0" aria-expanded="false">
+            <span>¿Puedo pagar antes del plazo?</span>
+            <span class="icon">+</span>
+          </div>
+          <div class="faq-answer">
+            <p>Sí. Podés cancelar tu crédito anticipadamente en cualquier momento y solo pagás los intereses generados hasta esa fecha, sin penalidades.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFaq(this)" role="button" tabindex="0" aria-expanded="false">
+            <span>¿Es seguro cargar mis datos personales?</span>
+            <span class="icon">+</span>
+          </div>
+          <div class="faq-answer">
+            <p>Totalmente. Usamos encriptación SSL de 256 bits (el mismo nivel que los bancos). Además cumplimos con la Ley de Protección de Datos Personales (Ley 25.326). Tu información está segura con nosotros.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       FORMULARIO DE SOLICITUD
+  ============================================================ -->
+  <section id="solicitar" class="section section--lg" aria-label="Formulario de solicitud">
+    <div class="glow-bg glow-1"></div>
+    <div class="container" style="position:relative;z-index:1;">
+      <div class="form-wrap">
+        <div class="section-header">
+          <div class="label">Solicitá ahora</div>
+          <h2 class="display-md">Tu crédito en 2 minutos</h2>
+          <p>Completá estos datos y te respondemos rápido. Sin compromiso hasta que vos confirmés.</p>
+        </div>
+
+        <div class="form-card">
+          <div class="form-steps">
+            <div class="form-step-dot active" id="dot-1"></div>
+            <div class="form-step-dot" id="dot-2"></div>
+            <div class="form-step-dot" id="dot-3"></div>
+          </div>
+
+          <div id="form-content">
+            <div class="form-grid-2">
+              <div class="form-group">
+                <label for="nombre">Nombre</label>
+                <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" autocomplete="given-name" />
+                <span class="field-error">Por favor ingresá tu nombre.</span>
+              </div>
+              <div class="form-group">
+                <label for="apellido">Apellido</label>
+                <input type="text" id="apellido" name="apellido" placeholder="Tu apellido" autocomplete="family-name" />
+                <span class="field-error">Por favor ingresá tu apellido.</span>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" placeholder="tucorreo@email.com" autocomplete="email" />
+              <span class="field-error">Ingresá un email válido.</span>
+            </div>
+
+            <div class="form-group">
+              <label for="telefono">Teléfono / WhatsApp</label>
+              <input type="tel" id="telefono" name="telefono" placeholder="11 1234-5678" autocomplete="tel" />
+              <span class="field-error">Ingresá tu número de teléfono.</span>
+            </div>
+
+            <div class="form-grid-2">
+              <div class="form-group">
+                <label for="monto">Monto solicitado</label>
+                <select id="monto" name="monto">
+                  <option value="">Seleccioná</option>
+                  <option>$50.000</option>
+                  <option>$100.000</option>
+                  <option>$150.000</option>
+                  <option>$200.000</option>
+                  <option>$300.000</option>
+                  <option>$400.000</option>
+                  <option>$500.000</option>
+                </select>
+                <span class="field-error">Seleccioná el monto.</span>
+              </div>
+              <div class="form-group">
+                <label for="cuotas">Cuotas</label>
+                <select id="cuotas" name="cuotas">
+                  <option value="">Seleccioná</option>
+                  <option>3 cuotas</option>
+                  <option>6 cuotas</option>
+                  <option>9 cuotas</option>
+                  <option>12 cuotas</option>
+                  <option>18 cuotas</option>
+                  <option>24 cuotas</option>
+                </select>
+                <span class="field-error">Seleccioná las cuotas.</span>
+              </div>
+            </div>
+
+            <button class="btn btn-primary btn-full btn-large" onclick="submitForm()" style="margin-top:8px;">
+              Quiero mi crédito →
+            </button>
+
+            <p class="form-note">
+              🔒 Tus datos están protegidos. No compartimos tu información con nadie.
+            </p>
+          </div>
+
+          <div class="form-success" id="form-success">
+            <span class="success-icon">🎉</span>
+            <h3 class="text-green">¡Solicitud enviada!</h3>
+            <p>Te contactamos en las próximas horas para darte una respuesta. Revisá también tu correo.</p>
+            <a href="#simulador" class="btn btn-secondary" style="margin-top:var(--space-md);">Simular otro monto</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       FOOTER
+  ============================================================ -->
+  <footer id="footer" aria-label="Pie de página">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="logo">Crédito<span>Ya</span></div>
+          <p>Créditos simples, rápidos y seguros para resolver lo que necesitás, cuando lo necesitás.</p>
+        </div>
+        <div class="footer-col">
+          <h5>Producto</h5>
+          <ul>
+            <li><a href="#como-funciona">Cómo funciona</a></li>
+            <li><a href="#simulador">Simular crédito</a></li>
+            <li><a href="#oferta">Nuestra oferta</a></li>
+            <li><a href="#solicitar">Solicitar crédito</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Empresa</h5>
+          <ul>
+            <li><a href="#">Acerca de nosotros</a></li>
+            <li><a href="#">Trabaja con nosotros</a></li>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">Contacto</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Legal</h5>
+          <ul>
+            <li><a href="#">Términos y condiciones</a></li>
+            <li><a href="#">Política de privacidad</a></li>
+            <li><a href="#">Protección de datos</a></li>
+            <li><a href="#">BCRA</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2025 CréditoYa. Todos los derechos reservados.</p>
+        <div class="footer-legal">
+          <a href="#">Privacidad</a>
+          <a href="#">Términos</a>
+          <a href="#">Cookies</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Sticky CTA mobile -->
+  <div class="sticky-cta" aria-label="Acceso rápido móvil">
+    <a href="#solicitar" class="btn btn-primary btn-full">Pedí tu crédito ahora →</a>
+  </div>
+
+  <!-- ============================================================
+       JAVASCRIPT
+  ============================================================ -->
+  <script>
+    /* ---- NAVBAR scroll ---- */
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 40);
+    });
+
+    /* ---- HERO SLIDER ---- */
+    const heroSlider = document.getElementById('hero-slider');
+    const heroAmount = document.getElementById('hero-amount');
+    const heroCuota  = document.getElementById('hero-cuota');
+
+    function calcCuota(monto, cuotas, tna) {
+      const tm = tna / 12;
+      const cuota = monto * (tm * Math.pow(1 + tm, cuotas)) / (Math.pow(1 + tm, cuotas) - 1);
+      return Math.round(cuota);
+    }
+
+    function formatPesos(n) {
+      return '$' + n.toLocaleString('es-AR');
+    }
+
+    heroSlider.addEventListener('input', function() {
+      const v = parseInt(this.value);
+      heroAmount.textContent = formatPesos(v);
+      heroCuota.textContent  = formatPesos(calcCuota(v, 12, 1.2));
+    });
+
+    /* ---- SIMULADOR ---- */
+    const simSlider = document.getElementById('sim-slider');
+    const simCuotas = document.getElementById('sim-cuotas');
+    const simML     = document.getElementById('sim-monto-label');
+    const simCL     = document.getElementById('sim-cuotas-label');
+    const simRM     = document.getElementById('sim-r-monto');
+    const simRC     = document.getElementById('sim-r-cuotas');
+    const simRCuota = document.getElementById('sim-r-cuota');
+
+    function updateSim() {
+      const monto  = parseInt(simSlider.value);
+      const cuotas = parseInt(simCuotas.value);
+      const cuota  = calcCuota(monto, cuotas, 1.2);
+      simML.textContent     = formatPesos(monto);
+      simCL.textContent     = cuotas + ' cuotas';
+      simRM.textContent     = formatPesos(monto);
+      simRC.textContent     = cuotas + ' cuotas';
+      simRCuota.textContent = formatPesos(cuota);
+    }
+
+    simSlider.addEventListener('input', updateSim);
+    simCuotas.addEventListener('input', updateSim);
+    updateSim();
+
+    /* ---- FAQ ACCORDION ---- */
+    function toggleFaq(el) {
+      const item = el.parentElement;
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i => {
+        i.classList.remove('open');
+        i.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+      });
+      if (!isOpen) {
+        item.classList.add('open');
+        el.setAttribute('aria-expanded', 'true');
+      }
+    }
+
+    /* Keyboard support para FAQ */
+    document.querySelectorAll('.faq-question').forEach(el => {
+      el.addEventListener('keydown', e => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          toggleFaq(el);
+        }
+      });
+    });
+
+    /* ---- FORM SUBMIT ---- */
+    function submitForm() {
+      const fields = ['nombre', 'apellido', 'email', 'telefono', 'monto', 'cuotas'];
+      let valid = true;
+
+      fields.forEach(id => {
+        const el = document.getElementById(id);
+        const isEmpty = !el.value.trim();
+        const isEmailInvalid = id === 'email' && el.value && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(el.value);
+
+        if (isEmpty || isEmailInvalid) {
+          el.classList.add('error');
+          valid = false;
+        } else {
+          el.classList.remove('error');
+        }
+      });
+
+      if (!valid) return;
+
+      // Animación de progress
+      document.getElementById('dot-1').className = 'form-step-dot done';
+      document.getElementById('dot-2').className = 'form-step-dot done';
+      document.getElementById('dot-3').className = 'form-step-dot active';
+
+      setTimeout(() => {
+        document.getElementById('form-content').style.display = 'none';
+        document.getElementById('form-success').style.display = 'block';
+        document.getElementById('dot-3').className = 'form-step-dot done';
+      }, 600);
+    }
+
+    /* ---- INTERSECTION OBSERVER (fade-up) ---- */
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.15 });
+
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+    /* ---- MOBILE MENU (simplificado) ---- */
+    function toggleMenu() {
+      // Scroll to solicitar como fallback mobile
+      document.getElementById('solicitar').scrollIntoView({ behavior: 'smooth' });
+    }
+  </script>
+
+</body>
+</html>
