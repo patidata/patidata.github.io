@@ -1,2065 +1,1410 @@
 <!DOCTYPE html>
-<html lang="es-AR">
+<html lang="es">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CréditoYa — Tu plata, cuando la necesitás</title>
-  <meta name="description" content="Préstamos de $50.000 a $500.000 con acreditación inmediata. Sin trámites, sin burocracia. Solicitá online en minutos." />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet" />
+
+  <!-- SEO Meta Tags -->
+  <title>iDatasol | Datos, Campañas y Consultoría de Marketing Directo en Argentina</title>
+  <meta name="description" content="iDatasol ofrece bases de datos geolocalizadas, campañas de email y WhatsApp, consultoría en retargeting y nurturing, e investigación de mercado para maximizar tu conversión en Argentina." />
+  <meta name="keywords" content="base de datos marketing, email marketing argentina, whatsapp marketing, retargeting, nurturing, investigación de mercado, marketing directo B2B, datos geolocalizados" />
+  <meta name="robots" content="index, follow" />
+  <meta name="author" content="iDatasol" />
+  <link rel="canonical" href="https://www.idatasol.com" />
+
+  <!-- Open Graph / Social -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://www.idatasol.com" />
+  <meta property="og:title" content="iDatasol | Marketing Directo con Datos Precisos" />
+  <meta property="og:description" content="Bases de datos, campañas y consultoría de marketing para empresas en Argentina." />
+  <meta property="og:locale" content="es_AR" />
+
+  <!-- Schema.org Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "iDatasol",
+    "url": "https://www.idatasol.com",
+    "description": "Empresa especializada en bases de datos para marketing directo, campañas de email y WhatsApp, consultoría en conversión e investigación de mercado en Argentina.",
+    "areaServed": "AR",
+    "serviceType": ["Marketing Directo", "Base de Datos", "Consultoría de Marketing", "Investigación de Mercado"]
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
 
   <style>
-    /* ============================================================
-       SISTEMA DE DISEÑO — VARIABLES
-    ============================================================ */
-    :root {
-      --color-bg:        #06090F;
-      --color-surface:   #0E1420;
-      --color-card:      #131B2A;
-      --color-border:    #1E2D45;
-      --color-accent:    #00D4FF;
-      --color-accent2:   #0099CC;
-      --color-green:     #00E87A;
-      --color-text:      #F0F4FF;
-      --color-muted:     #7A8BA8;
-      --color-white:     #FFFFFF;
-
-      --font-display:    'Syne', sans-serif;
-      --font-body:       'DM Sans', sans-serif;
-
-      --radius-sm:       8px;
-      --radius-md:       16px;
-      --radius-lg:       24px;
-      --radius-xl:       32px;
-
-      --space-xs:        8px;
-      --space-sm:        16px;
-      --space-md:        24px;
-      --space-lg:        48px;
-      --space-xl:        80px;
-      --space-xxl:       120px;
-
-      --max-width:       1200px;
-      --transition:      0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-
-    /* ============================================================
-       RESET & BASE
-    ============================================================ */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #f5f5f0;
+      --bg-card: #ffffff;
+      --ink: #0d0d0d;
+      --ink-soft: #555550;
+      --ink-muted: #999990;
+      --accent: #0a5fff;
+      --accent-dark: #0040cc;
+      --accent-light: #e8f0ff;
+      --line: #e2e2dc;
+      --radius: 16px;
+      --radius-sm: 10px;
+    }
 
     html { scroll-behavior: smooth; }
 
     body {
-      background-color: var(--color-bg);
-      color: var(--color-text);
-      font-family: var(--font-body);
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--ink);
       font-size: 16px;
-      line-height: 1.65;
+      line-height: 1.6;
       -webkit-font-smoothing: antialiased;
-      overflow-x: hidden;
     }
 
-    img { max-width: 100%; display: block; }
-    a { color: inherit; text-decoration: none; }
-
-    /* ============================================================
-       LAYOUT UTILITIES
-    ============================================================ */
-    .container {
-      max-width: var(--max-width);
-      margin: 0 auto;
-      padding: 0 var(--space-md);
+    /* ─── NAV ─────────────────────────────────────────── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 48px;
+      height: 64px;
+      background: rgba(245,245,240,0.85);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--line);
     }
 
-    .section {
-      padding: var(--space-xl) 0;
+    .nav-logo {
+      font-family: 'DM Serif Display', serif;
+      font-size: 22px;
+      color: var(--ink);
+      text-decoration: none;
+      letter-spacing: -0.5px;
+    }
+    .nav-logo span { color: var(--accent); }
+
+    .nav-links {
+      display: flex; gap: 36px; list-style: none;
+    }
+    .nav-links a {
+      color: var(--ink-soft);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--ink); }
+
+    .nav-cta {
+      background: var(--ink);
+      color: #fff !important;
+      padding: 8px 20px;
+      border-radius: 100px;
+      font-size: 13px !important;
+      font-weight: 500 !important;
+      transition: background 0.2s !important;
+    }
+    .nav-cta:hover { background: var(--accent) !important; color: #fff !important; }
+
+    /* ─── HERO ────────────────────────────────────────── */
+    #hero {
+      min-height: 100vh;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      text-align: center;
+      padding: 120px 24px 80px;
+      position: relative;
+      overflow: hidden;
     }
 
-    .section--lg {
-      padding: var(--space-xxl) 0;
+    .hero-grid {
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(10,95,255,0.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(10,95,255,0.06) 1px, transparent 1px);
+      background-size: 48px 48px;
+      mask-image: radial-gradient(ellipse 80% 60% at 50% 40%, black 20%, transparent 100%);
     }
 
-    .grid-2 {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: var(--space-lg);
-      align-items: center;
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--accent-light);
+      color: var(--accent);
+      font-size: 12px; font-weight: 600;
+      padding: 6px 16px; border-radius: 100px;
+      letter-spacing: 0.5px; text-transform: uppercase;
+      margin-bottom: 32px;
+      animation: fadeUp 0.8s ease both;
     }
-
-    .grid-3 {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: var(--space-md);
-    }
-
-    .grid-4 {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: var(--space-md);
-    }
-
-    .text-center { text-align: center; }
-    .flex { display: flex; }
-    .flex-center { display: flex; align-items: center; justify-content: center; }
-    .flex-between { display: flex; align-items: center; justify-content: space-between; }
-    .gap-sm { gap: var(--space-sm); }
-    .gap-md { gap: var(--space-md); }
-
-    /* ============================================================
-       TIPOGRAFÍA
-    ============================================================ */
-    h1, h2, h3, h4 {
-      font-family: var(--font-display);
-      line-height: 1.15;
-      font-weight: 700;
-    }
-
-    .display-xl {
-      font-size: clamp(2.8rem, 6vw, 5.5rem);
-      font-weight: 800;
-      letter-spacing: -0.03em;
-      line-height: 1.05;
-    }
-
-    .display-lg {
-      font-size: clamp(2rem, 4vw, 3.5rem);
-      font-weight: 700;
-      letter-spacing: -0.025em;
-    }
-
-    .display-md {
-      font-size: clamp(1.5rem, 2.5vw, 2.2rem);
-      font-weight: 700;
-    }
-
-    .text-accent { color: var(--color-accent); }
-    .text-green  { color: var(--color-green);  }
-    .text-muted  { color: var(--color-muted);  }
-
-    .label {
-      font-size: 0.75rem;
-      font-weight: 600;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--color-accent);
-    }
-
-    /* ============================================================
-       BOTONES
-    ============================================================ */
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      font-family: var(--font-body);
-      font-size: 1rem;
-      font-weight: 600;
-      border-radius: 50px;
-      padding: 16px 32px;
-      border: none;
-      cursor: pointer;
-      transition: var(--transition);
-      white-space: nowrap;
-    }
-
-    .btn-primary {
-      background: var(--color-accent);
-      color: #000;
-    }
-    .btn-primary:hover {
-      background: #33DDFF;
-      transform: translateY(-2px);
-      box-shadow: 0 8px 32px rgba(0, 212, 255, 0.4);
-    }
-
-    .btn-secondary {
-      background: transparent;
-      color: var(--color-text);
-      border: 1.5px solid var(--color-border);
-    }
-    .btn-secondary:hover {
-      border-color: var(--color-accent);
-      color: var(--color-accent);
-      transform: translateY(-2px);
-    }
-
-    .btn-large {
-      font-size: 1.1rem;
-      padding: 20px 44px;
-    }
-
-    .btn-full { width: 100%; }
-
-    /* ============================================================
-       EFECTOS VISUALES — FONDO
-    ============================================================ */
-    .glow-bg {
-      position: absolute;
+    .hero-badge::before {
+      content: '';
+      width: 6px; height: 6px;
+      background: var(--accent);
       border-radius: 50%;
-      filter: blur(80px);
-      pointer-events: none;
-      z-index: 0;
-    }
-
-    .glow-1 {
-      width: 600px;
-      height: 600px;
-      background: radial-gradient(circle, rgba(0,212,255,0.12) 0%, transparent 70%);
-      top: -200px;
-      right: -100px;
-    }
-
-    .glow-2 {
-      width: 500px;
-      height: 500px;
-      background: radial-gradient(circle, rgba(0,232,122,0.08) 0%, transparent 70%);
-      bottom: -100px;
-      left: -100px;
-    }
-
-    /* ============================================================
-       CARDS
-    ============================================================ */
-    .card {
-      background: var(--color-card);
-      border: 1px solid var(--color-border);
-      border-radius: var(--radius-lg);
-      padding: var(--space-md);
-      transition: var(--transition);
-    }
-
-    .card:hover {
-      border-color: rgba(0, 212, 255, 0.3);
-      transform: translateY(-4px);
-      box-shadow: 0 20px 60px rgba(0,0,0,0.4);
-    }
-
-    .card-icon {
-      width: 52px;
-      height: 52px;
-      border-radius: var(--radius-sm);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.4rem;
-      margin-bottom: var(--space-sm);
-    }
-
-    .icon-bg-blue  { background: rgba(0,212,255,0.12); }
-    .icon-bg-green { background: rgba(0,232,122,0.12); }
-    .icon-bg-purple{ background: rgba(120,80,255,0.12); }
-    .icon-bg-orange{ background: rgba(255,140,50,0.12); }
-
-    /* ============================================================
-       BADGE / CHIP
-    ============================================================ */
-    .badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 6px 14px;
-      border-radius: 50px;
-      font-size: 0.78rem;
-      font-weight: 600;
-    }
-
-    .badge-green {
-      background: rgba(0,232,122,0.12);
-      color: var(--color-green);
-      border: 1px solid rgba(0,232,122,0.25);
-    }
-
-    .badge-blue {
-      background: rgba(0,212,255,0.1);
-      color: var(--color-accent);
-      border: 1px solid rgba(0,212,255,0.2);
-    }
-
-    .dot {
-      width: 7px; height: 7px;
-      border-radius: 50%;
-      background: currentColor;
       animation: pulse 2s infinite;
     }
 
     @keyframes pulse {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.4; }
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(1.4); }
     }
 
-    /* ============================================================
-       NAVBAR
-    ============================================================ */
-    #navbar {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 100;
-      padding: 20px 0;
-      transition: var(--transition);
+    h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(44px, 7vw, 88px);
+      line-height: 1.0;
+      letter-spacing: -2px;
+      color: var(--ink);
+      max-width: 900px;
+      animation: fadeUp 0.8s 0.1s ease both;
+    }
+    h1 em {
+      font-style: italic;
+      color: var(--accent);
     }
 
-    #navbar.scrolled {
-      background: rgba(6, 9, 15, 0.92);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border-bottom: 1px solid var(--color-border);
-      padding: 14px 0;
-    }
-
-    .nav-inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .nav-logo {
-      font-family: var(--font-display);
-      font-size: 1.5rem;
-      font-weight: 800;
-      color: var(--color-white);
-    }
-
-    .nav-logo span { color: var(--color-accent); }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: var(--space-md);
-      list-style: none;
-    }
-
-    .nav-links a {
-      color: var(--color-muted);
-      font-size: 0.9rem;
-      font-weight: 500;
-      transition: color var(--transition);
-    }
-
-    .nav-links a:hover { color: var(--color-text); }
-
-    .nav-cta {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    /* Mobile menu */
-    .nav-toggle {
-      display: none;
-      background: none;
-      border: none;
-      cursor: pointer;
-      color: var(--color-text);
-    }
-
-    /* ============================================================
-       HERO SECTION
-    ============================================================ */
-    #hero {
-      position: relative;
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      overflow: hidden;
-      padding-top: 100px;
-    }
-
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      gap: var(--space-xl);
-      align-items: center;
-      position: relative;
-      z-index: 1;
-    }
-
-    .hero-eyebrow {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin-bottom: var(--space-md);
-    }
-
-    .hero-title {
-      margin-bottom: var(--space-md);
-    }
-
-    .hero-title .highlight {
-      color: var(--color-accent);
-      position: relative;
-    }
-
-    .hero-subtitle {
-      font-size: 1.15rem;
-      color: var(--color-muted);
-      max-width: 520px;
-      margin-bottom: var(--space-lg);
+    .hero-sub {
+      margin-top: 24px;
+      font-size: clamp(16px, 2vw, 20px);
+      color: var(--ink-soft);
+      max-width: 560px;
+      font-weight: 300;
       line-height: 1.7;
+      animation: fadeUp 0.8s 0.2s ease both;
     }
 
     .hero-actions {
-      display: flex;
-      gap: var(--space-sm);
-      flex-wrap: wrap;
-      margin-bottom: var(--space-lg);
+      display: flex; gap: 16px; margin-top: 48px;
+      flex-wrap: wrap; justify-content: center;
+      animation: fadeUp 0.8s 0.3s ease both;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #fff;
+      padding: 16px 36px;
+      border-radius: 100px;
+      font-size: 15px; font-weight: 600;
+      text-decoration: none;
+      transition: all 0.2s;
+      box-shadow: 0 8px 32px rgba(10,95,255,0.3);
+    }
+    .btn-primary:hover {
+      background: var(--accent-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 12px 40px rgba(10,95,255,0.4);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--ink);
+      padding: 16px 36px;
+      border-radius: 100px;
+      font-size: 15px; font-weight: 500;
+      text-decoration: none;
+      border: 1.5px solid var(--line);
+      transition: all 0.2s;
+    }
+    .btn-secondary:hover {
+      border-color: var(--ink);
+      transform: translateY(-2px);
     }
 
     .hero-stats {
-      display: flex;
-      gap: var(--space-lg);
-      padding-top: var(--space-md);
-      border-top: 1px solid var(--color-border);
+      display: flex; gap: 48px; margin-top: 80px;
+      flex-wrap: wrap; justify-content: center;
+      animation: fadeUp 0.8s 0.4s ease both;
     }
-
-    .hero-stat .value {
-      font-family: var(--font-display);
-      font-size: 1.8rem;
-      font-weight: 800;
-      color: var(--color-white);
-    }
-
-    .hero-stat .desc {
-      font-size: 0.8rem;
-      color: var(--color-muted);
-      margin-top: 2px;
-    }
-
-    /* Hero card flotante */
-    .hero-visual {
-      position: relative;
-    }
-
-    .hero-card-main {
-      background: var(--color-card);
-      border: 1px solid var(--color-border);
-      border-radius: var(--radius-xl);
-      padding: 36px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero-card-main::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 2px;
-      background: linear-gradient(90deg, var(--color-accent), var(--color-green));
-    }
-
-    .credit-display {
-      text-align: center;
-      padding: var(--space-md) 0;
-    }
-
-    .credit-amount {
-      font-family: var(--font-display);
-      font-size: 3.5rem;
-      font-weight: 800;
-      color: var(--color-white);
-      margin: 8px 0;
-    }
-
-    .credit-label {
-      font-size: 0.85rem;
-      color: var(--color-muted);
-    }
-
-    .slider-wrap {
-      margin: var(--space-sm) 0;
-    }
-
-    .slider-wrap label {
-      display: flex;
-      justify-content: space-between;
-      font-size: 0.82rem;
-      color: var(--color-muted);
-      margin-bottom: 8px;
-    }
-
-    input[type="range"] {
-      -webkit-appearance: none;
-      width: 100%;
-      height: 6px;
-      background: var(--color-border);
-      border-radius: 3px;
-      outline: none;
-    }
-
-    input[type="range"]::-webkit-slider-thumb {
-      -webkit-appearance: none;
-      width: 22px;
-      height: 22px;
-      background: var(--color-accent);
-      border-radius: 50%;
-      cursor: pointer;
-      box-shadow: 0 0 12px rgba(0,212,255,0.5);
-    }
-
-    .credit-info-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-      margin-top: var(--space-sm);
-    }
-
-    .credit-info-item {
-      background: var(--color-surface);
-      border-radius: var(--radius-sm);
-      padding: 12px;
+    .stat {
       text-align: center;
     }
-
-    .credit-info-item .val {
-      font-family: var(--font-display);
-      font-size: 1.1rem;
-      font-weight: 700;
-      color: var(--color-text);
+    .stat-num {
+      font-family: 'DM Serif Display', serif;
+      font-size: 40px;
+      color: var(--ink);
+      line-height: 1;
+    }
+    .stat-num span { color: var(--accent); }
+    .stat-label {
+      font-size: 13px;
+      color: var(--ink-muted);
+      margin-top: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
     }
 
-    .credit-info-item .lbl {
-      font-size: 0.72rem;
-      color: var(--color-muted);
-      margin-top: 2px;
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
-    /* Floating badges on hero visual */
-    .float-badge {
-      position: absolute;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      background: rgba(14, 20, 32, 0.9);
-      border: 1px solid var(--color-border);
-      border-radius: 50px;
-      padding: 10px 16px;
-      font-size: 0.82rem;
-      font-weight: 500;
-      backdrop-filter: blur(10px);
-      white-space: nowrap;
-      animation: float 4s ease-in-out infinite;
+    /* ─── SECTION BASE ────────────────────────────────── */
+    section {
+      padding: 100px 24px;
     }
-
-    .float-badge-1 { top: -20px; left: -20px; animation-delay: 0s; }
-    .float-badge-2 { bottom: 30px; right: -30px; animation-delay: 2s; }
-
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-8px); }
-    }
-
-    /* ============================================================
-       SECCIÓN: CONFIANZA / LOGOS
-    ============================================================ */
-    #trust-bar {
-      border-top: 1px solid var(--color-border);
-      border-bottom: 1px solid var(--color-border);
-      padding: 28px 0;
-    }
-
-    .trust-bar-inner {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: var(--space-xl);
-      flex-wrap: wrap;
-    }
-
-    .trust-item {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      color: var(--color-muted);
-      font-size: 0.88rem;
-      font-weight: 500;
-    }
-
-    .trust-icon {
-      font-size: 1.3rem;
-      opacity: 0.7;
-    }
-
-    /* ============================================================
-       SECCIÓN: BENEFICIOS
-    ============================================================ */
-    #beneficios .section-header {
-      max-width: 600px;
-      margin: 0 auto var(--space-xl);
-    }
-
-    .benefit-card {
-      padding: 28px;
-    }
-
-    .benefit-card h3 {
-      font-size: 1.15rem;
-      margin: 14px 0 8px;
-    }
-
-    .benefit-card p {
-      font-size: 0.9rem;
-      color: var(--color-muted);
-      line-height: 1.6;
-    }
-
-    /* ============================================================
-       SECCIÓN: CÓMO FUNCIONA
-    ============================================================ */
-    #como-funciona {
-      background: var(--color-surface);
-      position: relative;
-    }
-
-    .steps-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: var(--space-md);
-      position: relative;
-    }
-
-    .steps-grid::before {
-      content: '';
-      position: absolute;
-      top: 36px;
-      left: 12%;
-      right: 12%;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, var(--color-border), transparent);
-    }
-
-    .step-card {
-      text-align: center;
-      padding: 28px 20px;
-      position: relative;
-    }
-
-    .step-number {
-      width: 56px;
-      height: 56px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, var(--color-accent), #0088bb);
-      color: #000;
-      font-family: var(--font-display);
-      font-size: 1.3rem;
-      font-weight: 800;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 0 auto var(--space-sm);
-      position: relative;
-      z-index: 1;
-    }
-
-    .step-card h3 {
-      font-size: 1.05rem;
-      margin-bottom: 8px;
-    }
-
-    .step-card p {
-      font-size: 0.87rem;
-      color: var(--color-muted);
-    }
-
-    /* ============================================================
-       SECCIÓN: SIMULADOR
-    ============================================================ */
-    #simulador {
-      position: relative;
-      overflow: hidden;
-    }
-
-    .simulator-wrap {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: var(--space-xl);
-      align-items: center;
-    }
-
-    .simulator-card {
-      background: var(--color-card);
-      border: 1px solid var(--color-border);
-      border-radius: var(--radius-xl);
-      padding: 40px;
-      position: relative;
-    }
-
-    .simulator-card::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      border-radius: var(--radius-xl);
-      background: linear-gradient(135deg, rgba(0,212,255,0.05), transparent);
-      pointer-events: none;
-    }
-
-    .sim-result {
-      background: var(--color-surface);
-      border: 1px solid var(--color-border);
-      border-radius: var(--radius-md);
-      padding: var(--space-md);
-      margin-top: var(--space-md);
-    }
-
-    .sim-result-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 10px 0;
-      border-bottom: 1px solid var(--color-border);
-      font-size: 0.9rem;
-    }
-
-    .sim-result-row:last-child { border-bottom: none; }
-    .sim-result-row .key { color: var(--color-muted); }
-    .sim-result-row .val { font-weight: 600; color: var(--color-text); }
-    .sim-result-row .val.highlight { color: var(--color-green); font-size: 1.1rem; }
-
-    .sim-form-group {
-      margin-bottom: var(--space-sm);
-    }
-
-    .sim-form-group label {
-      display: flex;
-      justify-content: space-between;
-      font-size: 0.85rem;
-      color: var(--color-muted);
-      margin-bottom: 10px;
-    }
-
-    .sim-form-group label span {
-      color: var(--color-accent);
-      font-weight: 600;
-    }
-
-    /* ============================================================
-       SECCIÓN: PRUEBA SOCIAL
-    ============================================================ */
-    #testimonios {
-      overflow: hidden;
-    }
-
-    .testimonios-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: var(--space-md);
-    }
-
-    .testimonio-card {
-      padding: 28px;
-    }
-
-    .stars {
-      color: #FFB800;
-      font-size: 0.9rem;
-      margin-bottom: 14px;
-      letter-spacing: 2px;
-    }
-
-    .testimonio-text {
-      font-size: 0.95rem;
-      color: var(--color-muted);
-      line-height: 1.7;
-      margin-bottom: 20px;
-      font-style: italic;
-    }
-
-    .testimonio-author {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .avatar {
-      width: 42px;
-      height: 42px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: var(--font-display);
-      font-size: 1rem;
-      font-weight: 700;
-      color: #000;
-    }
-
-    .av-1 { background: linear-gradient(135deg, var(--color-accent), #0088bb); }
-    .av-2 { background: linear-gradient(135deg, var(--color-green), #00aa55); }
-    .av-3 { background: linear-gradient(135deg, #FF6B6B, #cc3333); }
-
-    .author-info .name {
-      font-weight: 600;
-      font-size: 0.92rem;
-    }
-    .author-info .role {
-      font-size: 0.78rem;
-      color: var(--color-muted);
-    }
-
-    /* ============================================================
-       SECCIÓN: OFERTA IRRESISTIBLE
-    ============================================================ */
-    #oferta {
-      background: var(--color-surface);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .oferta-inner {
-      position: relative;
-      z-index: 1;
-      max-width: 860px;
+    .container {
+      max-width: 1100px;
       margin: 0 auto;
     }
+    .section-label {
+      font-size: 12px; font-weight: 600;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 16px;
+    }
+    h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(32px, 4vw, 52px);
+      letter-spacing: -1.5px;
+      line-height: 1.1;
+      color: var(--ink);
+    }
+    h2 em { font-style: italic; color: var(--accent); }
+    .section-intro {
+      font-size: 18px;
+      color: var(--ink-soft);
+      max-width: 540px;
+      font-weight: 300;
+      line-height: 1.7;
+      margin-top: 16px;
+    }
 
-    .oferta-card {
-      background: var(--color-card);
-      border: 1px solid rgba(0,212,255,0.25);
-      border-radius: var(--radius-xl);
-      padding: 56px;
+    /* ─── LOGOS STRIP ─────────────────────────────────── */
+    #logos {
+      padding: 48px 24px;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+    .logos-label {
       text-align: center;
+      font-size: 12px;
+      color: var(--ink-muted);
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 32px;
+    }
+    .logos-row {
+      display: flex; justify-content: center; align-items: center;
+      gap: 56px; flex-wrap: wrap;
+    }
+    .logo-pill {
+      font-family: 'DM Serif Display', serif;
+      font-size: 18px;
+      color: var(--ink-muted);
+      opacity: 0.5;
+      letter-spacing: -0.5px;
+      transition: opacity 0.2s;
+    }
+    .logo-pill:hover { opacity: 1; }
+
+    /* ─── SERVICES ────────────────────────────────────── */
+    #servicios { background: var(--bg); }
+
+    .services-header {
+      display: flex; justify-content: space-between; align-items: flex-end;
+      margin-bottom: 64px; flex-wrap: wrap; gap: 24px;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+
+    @media (max-width: 768px) {
+      .services-grid { grid-template-columns: 1fr; }
+    }
+
+    .service-card {
+      background: var(--bg-card);
+      border-radius: var(--radius);
+      padding: 48px;
+      border: 1px solid var(--line);
       position: relative;
       overflow: hidden;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .service-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.08);
+    }
+    .service-card.featured {
+      background: var(--ink);
+      border-color: var(--ink);
+      grid-column: span 2;
+    }
+    @media (max-width: 768px) {
+      .service-card.featured { grid-column: span 1; }
     }
 
-    .oferta-card::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 3px;
-      background: linear-gradient(90deg, var(--color-accent), var(--color-green), var(--color-accent));
-      background-size: 200%;
-      animation: shimmer 3s linear infinite;
+    .service-icon {
+      width: 48px; height: 48px;
+      border-radius: var(--radius-sm);
+      background: var(--accent-light);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 22px;
+      margin-bottom: 28px;
+    }
+    .service-card.featured .service-icon {
+      background: rgba(255,255,255,0.1);
     }
 
-    @keyframes shimmer {
-      0% { background-position: 0%; }
-      100% { background-position: 200%; }
+    .service-card h3 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 26px;
+      letter-spacing: -0.5px;
+      margin-bottom: 12px;
+    }
+    .service-card.featured h3 { color: #fff; }
+
+    .service-card p {
+      font-size: 15px;
+      color: var(--ink-soft);
+      line-height: 1.7;
+      font-weight: 300;
+    }
+    .service-card.featured p { color: rgba(255,255,255,0.65); }
+
+    .service-tags {
+      display: flex; flex-wrap: wrap; gap: 8px; margin-top: 24px;
+    }
+    .tag {
+      font-size: 12px; font-weight: 500;
+      padding: 5px 12px;
+      border-radius: 100px;
+      background: var(--bg);
+      color: var(--ink-soft);
+      border: 1px solid var(--line);
+    }
+    .service-card.featured .tag {
+      background: rgba(255,255,255,0.1);
+      border-color: rgba(255,255,255,0.2);
+      color: rgba(255,255,255,0.8);
     }
 
-    .oferta-price {
-      margin: var(--space-md) 0;
+    .featured-inner {
+      display: flex; justify-content: space-between; align-items: flex-start;
+      gap: 48px; flex-wrap: wrap;
     }
-
-    .oferta-price .desde { font-size: 1rem; color: var(--color-muted); }
-    .oferta-price .amount {
-      font-family: var(--font-display);
-      font-size: clamp(3rem, 6vw, 5rem);
-      font-weight: 800;
-      color: var(--color-accent);
+    .featured-left { flex: 1; min-width: 280px; }
+    .featured-right {
+      flex: 1; min-width: 280px;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 24px;
+    }
+    .metric {
+      text-align: left;
+    }
+    .metric-num {
+      font-family: 'DM Serif Display', serif;
+      font-size: 44px;
+      color: #fff;
       line-height: 1;
-      margin: 4px 0;
     }
-    .oferta-price .hasta { font-size: 1rem; color: var(--color-muted); }
-
-    .oferta-benefits {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 12px;
-      margin: var(--space-md) 0;
+    .metric-num span { color: var(--accent); }
+    .metric-label {
+      font-size: 13px;
+      color: rgba(255,255,255,0.5);
+      margin-top: 6px;
     }
 
-    .oferta-benefit {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      background: rgba(0,232,122,0.08);
-      border: 1px solid rgba(0,232,122,0.15);
-      border-radius: 50px;
-      padding: 8px 16px;
-      font-size: 0.88rem;
-      color: var(--color-text);
-    }
+    /* ─── CASOS ───────────────────────────────────────── */
+    #casos { background: var(--ink); }
+    #casos .section-label { color: rgba(10,95,255,0.9); }
+    #casos h2 { color: #fff; }
+    #casos .section-intro { color: rgba(255,255,255,0.5); }
 
-    .oferta-benefit .icon { color: var(--color-green); }
-
-    .oferta-guarantee {
-      margin-top: var(--space-md);
-      font-size: 0.88rem;
-      color: var(--color-muted);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-    }
-
-    /* ============================================================
-       SECCIÓN: SEGURIDAD
-    ============================================================ */
-    #seguridad .security-grid {
+    .casos-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: var(--space-md);
+      gap: 24px;
+      margin-top: 64px;
+    }
+    @media (max-width: 900px) {
+      .casos-grid { grid-template-columns: 1fr; }
     }
 
-    .security-item {
-      display: flex;
-      align-items: flex-start;
-      gap: 16px;
-      padding: 24px;
+    .caso-card {
+      border-radius: var(--radius);
+      padding: 40px;
+      border: 1px solid rgba(255,255,255,0.1);
+      background: rgba(255,255,255,0.04);
+      transition: border-color 0.3s, background 0.3s;
+    }
+    .caso-card:hover {
+      border-color: rgba(10,95,255,0.5);
+      background: rgba(10,95,255,0.06);
     }
 
-    .security-icon {
-      font-size: 1.8rem;
-      flex-shrink: 0;
+    .caso-industry {
+      font-size: 12px; font-weight: 600;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 20px;
+    }
+    .caso-result {
+      font-family: 'DM Serif Display', serif;
+      font-size: 52px;
+      color: #fff;
+      line-height: 1;
+      margin-bottom: 12px;
+    }
+    .caso-result span { color: var(--accent); }
+    .caso-desc {
+      font-size: 14px;
+      color: rgba(255,255,255,0.5);
+      line-height: 1.7;
     }
 
-    .security-item h4 {
-      font-size: 1rem;
+    /* ─── CONSULTORIA ─────────────────────────────────── */
+    #consultoria { background: var(--bg); }
+
+    .consult-wrap {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+    @media (max-width: 768px) {
+      .consult-wrap { grid-template-columns: 1fr; }
+    }
+
+    .consult-steps {
+      display: flex; flex-direction: column; gap: 0;
+      margin-top: 48px;
+    }
+    .step {
+      display: flex; gap: 24px;
+      padding: 28px 0;
+      border-bottom: 1px solid var(--line);
+    }
+    .step:last-child { border-bottom: none; }
+    .step-num {
+      font-family: 'DM Serif Display', serif;
+      font-size: 13px;
+      color: var(--accent);
+      min-width: 32px;
+      padding-top: 3px;
+    }
+    .step-content h4 {
+      font-size: 16px; font-weight: 600;
       margin-bottom: 6px;
     }
-
-    .security-item p {
-      font-size: 0.88rem;
-      color: var(--color-muted);
+    .step-content p {
+      font-size: 14px;
+      color: var(--ink-soft);
+      line-height: 1.6;
+      font-weight: 300;
     }
 
-    /* ============================================================
-       SECCIÓN: FAQ
-    ============================================================ */
-    #faq {
-      background: var(--color-surface);
-    }
-
-    .faq-list {
-      max-width: 780px;
-      margin: 0 auto;
-    }
-
-    .faq-item {
-      border-bottom: 1px solid var(--color-border);
-    }
-
-    .faq-question {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 22px 0;
-      cursor: pointer;
-      font-weight: 600;
-      font-size: 1.02rem;
-      gap: 16px;
-      user-select: none;
-    }
-
-    .faq-question .icon {
-      font-size: 1.4rem;
-      color: var(--color-accent);
-      transition: transform var(--transition);
-      flex-shrink: 0;
-    }
-
-    .faq-item.open .faq-question .icon {
-      transform: rotate(45deg);
-    }
-
-    .faq-answer {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.4s ease, padding 0.3s ease;
-    }
-
-    .faq-item.open .faq-answer {
-      max-height: 400px;
-      padding-bottom: 20px;
-    }
-
-    .faq-answer p {
-      color: var(--color-muted);
-      font-size: 0.95rem;
-      line-height: 1.7;
-    }
-
-    /* ============================================================
-       SECCIÓN: FORMULARIO
-    ============================================================ */
-    #solicitar {
-      position: relative;
-      overflow: hidden;
-    }
-
-    .form-wrap {
-      max-width: 660px;
-      margin: 0 auto;
-    }
-
-    .form-card {
-      background: var(--color-card);
-      border: 1px solid var(--color-border);
-      border-radius: var(--radius-xl);
+    .consult-visual {
+      background: var(--bg-card);
+      border-radius: var(--radius);
       padding: 48px;
+      border: 1px solid var(--line);
+    }
+    .funnel {
+      display: flex; flex-direction: column; gap: 12px;
+    }
+    .funnel-stage {
+      border-radius: var(--radius-sm);
+      padding: 16px 24px;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .funnel-stage:nth-child(1) { background: var(--accent); width: 100%; }
+    .funnel-stage:nth-child(2) { background: #1a6fff; width: 85%; }
+    .funnel-stage:nth-child(3) { background: #3380ff; width: 68%; }
+    .funnel-stage:nth-child(4) { background: #4d93ff; width: 48%; }
+    .funnel-stage:nth-child(5) { background: #66a3ff; width: 30%; }
+
+    .funnel-label { font-size: 13px; font-weight: 600; color: #fff; }
+    .funnel-pct { font-size: 13px; color: rgba(255,255,255,0.75); }
+
+    /* ─── NOSOTROS ────────────────────────────────────── */
+    #nosotros {
+      background: var(--bg-card);
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
     }
 
-    .form-grid-2 {
+    .nosotros-wrap {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: var(--space-sm);
+      gap: 80px;
+      align-items: center;
+    }
+    @media (max-width: 768px) {
+      .nosotros-wrap { grid-template-columns: 1fr; }
     }
 
-    .form-group {
-      margin-bottom: var(--space-sm);
+    .nosotros-text p {
+      font-size: 16px;
+      color: var(--ink-soft);
+      font-weight: 300;
+      line-height: 1.8;
+      margin-top: 24px;
     }
 
-    .form-group label {
-      display: block;
-      font-size: 0.85rem;
-      font-weight: 600;
-      color: var(--color-muted);
-      margin-bottom: 8px;
+    .values-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 24px;
     }
-
-    .form-group input,
-    .form-group select {
-      width: 100%;
-      background: var(--color-surface);
-      border: 1.5px solid var(--color-border);
+    .value-item {
+      padding: 28px;
       border-radius: var(--radius-sm);
-      padding: 14px 16px;
-      color: var(--color-text);
-      font-family: var(--font-body);
-      font-size: 0.95rem;
-      outline: none;
-      transition: var(--transition);
-      -webkit-appearance: none;
+      background: var(--bg);
+      border: 1px solid var(--line);
     }
+    .value-icon { font-size: 24px; margin-bottom: 12px; }
+    .value-item h4 { font-size: 15px; font-weight: 600; margin-bottom: 6px; }
+    .value-item p { font-size: 13px; color: var(--ink-soft); line-height: 1.6; font-weight: 300; }
 
-    .form-group input::placeholder { color: #3A4A60; }
+    /* ─── BLOG ────────────────────────────────────────── */
+    #blog { background: var(--bg); }
 
-    .form-group input:focus,
-    .form-group select:focus {
-      border-color: var(--color-accent);
-      box-shadow: 0 0 0 3px rgba(0,212,255,0.1);
-    }
-
-    .form-group input.error {
-      border-color: #FF5555;
-    }
-
-    .field-error {
-      display: none;
-      font-size: 0.78rem;
-      color: #FF6B6B;
-      margin-top: 4px;
-    }
-
-    .form-group input.error + .field-error { display: block; }
-
-    .form-success {
-      display: none;
-      text-align: center;
-      padding: 40px 20px;
-    }
-
-    .form-success .success-icon {
-      font-size: 3.5rem;
-      margin-bottom: 16px;
-      display: block;
-    }
-
-    .form-success h3 {
-      font-size: 1.5rem;
-      margin-bottom: 10px;
-    }
-
-    .form-success p {
-      color: var(--color-muted);
-    }
-
-    .form-note {
-      font-size: 0.78rem;
-      color: var(--color-muted);
-      text-align: center;
-      margin-top: 14px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 6px;
-    }
-
-    /* Progress steps in form */
-    .form-steps {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      margin-bottom: var(--space-md);
-    }
-
-    .form-step-dot {
-      width: 8px; height: 8px;
-      border-radius: 50%;
-      background: var(--color-border);
-      transition: var(--transition);
-    }
-
-    .form-step-dot.active { background: var(--color-accent); width: 24px; border-radius: 4px; }
-    .form-step-dot.done { background: var(--color-green); }
-
-    /* ============================================================
-       FOOTER
-    ============================================================ */
-    #footer {
-      background: var(--color-surface);
-      border-top: 1px solid var(--color-border);
-      padding: var(--space-xl) 0 var(--space-md);
-    }
-
-    .footer-grid {
+    .blog-grid {
       display: grid;
-      grid-template-columns: 2fr 1fr 1fr 1fr;
-      gap: var(--space-lg);
-      margin-bottom: var(--space-xl);
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 64px;
+    }
+    @media (max-width: 900px) {
+      .blog-grid { grid-template-columns: 1fr; }
     }
 
-    .footer-brand .logo {
-      font-family: var(--font-display);
-      font-size: 1.6rem;
-      font-weight: 800;
-      margin-bottom: var(--space-sm);
+    .post-card {
+      background: var(--bg-card);
+      border-radius: var(--radius);
+      overflow: hidden;
+      border: 1px solid var(--line);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .post-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.08);
     }
 
-    .footer-brand .logo span { color: var(--color-accent); }
+    .post-thumb {
+      height: 180px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 48px;
+    }
+    .post-thumb.t1 { background: linear-gradient(135deg, #e8f0ff, #c5d8ff); }
+    .post-thumb.t2 { background: linear-gradient(135deg, #e8fff0, #c5f0d8); }
+    .post-thumb.t3 { background: linear-gradient(135deg, #fff8e8, #ffe8c5); }
 
-    .footer-brand p {
-      font-size: 0.88rem;
-      color: var(--color-muted);
+    .post-body { padding: 28px; }
+    .post-cat {
+      font-size: 11px; font-weight: 600;
+      text-transform: uppercase; letter-spacing: 1px;
+      color: var(--accent); margin-bottom: 10px;
+    }
+    .post-body h3 {
+      font-size: 18px; font-weight: 600;
+      line-height: 1.4; margin-bottom: 10px;
+    }
+    .post-body p {
+      font-size: 14px; color: var(--ink-soft);
+      line-height: 1.6; font-weight: 300;
+    }
+    .post-footer {
+      padding: 16px 28px;
+      border-top: 1px solid var(--line);
+      display: flex; justify-content: space-between;
+      font-size: 12px; color: var(--ink-muted);
+    }
+
+    /* ─── CONTACT ─────────────────────────────────────── */
+    #contacto {
+      background: var(--ink);
+      padding: 100px 24px;
+    }
+    #contacto .section-label { color: rgba(10,95,255,0.9); }
+    #contacto h2 { color: #fff; }
+
+    .contact-wrap {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      margin-top: 64px;
+      align-items: start;
+    }
+    @media (max-width: 768px) {
+      .contact-wrap { grid-template-columns: 1fr; }
+    }
+
+    .contact-info p {
+      font-size: 18px;
+      color: rgba(255,255,255,0.6);
+      font-weight: 300;
       line-height: 1.7;
-      max-width: 280px;
+      margin-bottom: 40px;
     }
 
+    .contact-channels {
+      display: flex; flex-direction: column; gap: 16px;
+    }
+    .channel {
+      display: flex; align-items: center; gap: 16px;
+      padding: 20px 24px;
+      border-radius: var(--radius-sm);
+      border: 1px solid rgba(255,255,255,0.1);
+      text-decoration: none;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .channel:hover {
+      border-color: var(--accent);
+      background: rgba(10,95,255,0.08);
+    }
+    .channel-icon { font-size: 22px; }
+    .channel-label { font-size: 14px; font-weight: 500; color: #fff; }
+    .channel-sub { font-size: 12px; color: rgba(255,255,255,0.4); margin-top: 2px; }
+
+    .contact-form {
+      display: flex; flex-direction: column; gap: 16px;
+    }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+
+    .field {
+      display: flex; flex-direction: column; gap: 8px;
+    }
+    .field label {
+      font-size: 12px; font-weight: 500;
+      color: rgba(255,255,255,0.5);
+      text-transform: uppercase; letter-spacing: 0.5px;
+    }
+    .field input, .field select, .field textarea {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: var(--radius-sm);
+      padding: 14px 18px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 15px;
+      color: #fff;
+      outline: none;
+      transition: border-color 0.2s, background 0.2s;
+      resize: none;
+    }
+    .field input::placeholder, .field textarea::placeholder { color: rgba(255,255,255,0.25); }
+    .field input:focus, .field select:focus, .field textarea:focus {
+      border-color: var(--accent);
+      background: rgba(10,95,255,0.08);
+    }
+    .field select option { background: #1a1a1a; }
+
+    .submit-btn {
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: 100px;
+      padding: 18px 40px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 15px; font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+      box-shadow: 0 8px 32px rgba(10,95,255,0.4);
+      align-self: flex-start;
+    }
+    .submit-btn:hover {
+      background: var(--accent-dark);
+      transform: translateY(-2px);
+    }
+
+    /* ─── FOOTER ──────────────────────────────────────── */
+    footer {
+      background: #070707;
+      padding: 64px 24px 32px;
+    }
+    .footer-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .footer-top {
+      display: flex; justify-content: space-between; align-items: flex-start;
+      padding-bottom: 48px;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      flex-wrap: wrap; gap: 40px;
+    }
+    .footer-brand .nav-logo { font-size: 28px; }
+    .footer-brand p {
+      font-size: 14px;
+      color: rgba(255,255,255,0.35);
+      margin-top: 10px;
+      max-width: 260px;
+      line-height: 1.6;
+    }
     .footer-col h5 {
-      font-family: var(--font-display);
-      font-size: 0.9rem;
-      font-weight: 700;
-      margin-bottom: var(--space-sm);
-      color: var(--color-text);
+      font-size: 12px; font-weight: 600;
+      text-transform: uppercase; letter-spacing: 1px;
+      color: rgba(255,255,255,0.35);
+      margin-bottom: 16px;
     }
-
-    .footer-col ul {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
     .footer-col ul a {
-      font-size: 0.88rem;
-      color: var(--color-muted);
-      transition: color var(--transition);
+      font-size: 14px; color: rgba(255,255,255,0.55);
+      text-decoration: none; transition: color 0.2s;
     }
-
-    .footer-col ul a:hover { color: var(--color-accent); }
+    .footer-col ul a:hover { color: #fff; }
 
     .footer-bottom {
-      padding-top: var(--space-md);
-      border-top: 1px solid var(--color-border);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 12px;
+      display: flex; justify-content: space-between; align-items: center;
+      padding-top: 32px; flex-wrap: wrap; gap: 16px;
     }
-
     .footer-bottom p {
-      font-size: 0.8rem;
-      color: var(--color-muted);
+      font-size: 13px; color: rgba(255,255,255,0.25);
     }
+    .footer-bottom a { color: rgba(255,255,255,0.35); text-decoration: none; }
 
-    .footer-legal {
-      display: flex;
-      gap: var(--space-md);
-    }
-
-    .footer-legal a {
-      font-size: 0.8rem;
-      color: var(--color-muted);
-      transition: color var(--transition);
-    }
-
-    .footer-legal a:hover { color: var(--color-text); }
-
-    /* ============================================================
-       STICKY CTA BAR (mobile)
-    ============================================================ */
-    .sticky-cta {
-      display: none;
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      background: rgba(6, 9, 15, 0.95);
-      backdrop-filter: blur(20px);
-      border-top: 1px solid var(--color-border);
-      padding: 16px var(--space-md);
-      z-index: 90;
-    }
-
-    /* ============================================================
-       ANIMACIONES DE ENTRADA
-    ============================================================ */
-    .fade-up {
+    /* ─── SCROLL REVEAL ───────────────────────────────── */
+    .reveal {
       opacity: 0;
-      transform: translateY(30px);
-      transition: opacity 0.6s ease, transform 0.6s ease;
+      transform: translateY(32px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
     }
-
-    .fade-up.visible {
+    .reveal.visible {
       opacity: 1;
       transform: translateY(0);
     }
 
-    .fade-up:nth-child(2) { transition-delay: 0.1s; }
-    .fade-up:nth-child(3) { transition-delay: 0.2s; }
-    .fade-up:nth-child(4) { transition-delay: 0.3s; }
+    /* ─── HAMBURGER ───────────────────────────────────── */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      width: 36px; height: 36px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 4px;
+    }
+    .hamburger span {
+      display: block;
+      width: 22px; height: 2px;
+      background: var(--ink);
+      border-radius: 2px;
+      transition: all 0.3s ease;
+      transform-origin: center;
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
-    /* ============================================================
-       SECCIÓN HEADER GENÉRICO
-    ============================================================ */
-    .section-header {
+    /* Mobile menu drawer */
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 64px; left: 0; right: 0;
+      background: rgba(245,245,240,0.97);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--line);
+      padding: 16px 20px 24px;
+      z-index: 99;
+      flex-direction: column;
+      gap: 4px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      color: var(--ink);
+      text-decoration: none;
+      font-size: 16px;
+      font-weight: 500;
+      padding: 12px 8px;
+      border-bottom: 1px solid var(--line);
+      transition: color 0.2s;
+    }
+    .mobile-menu a:last-child {
+      border-bottom: none;
+      margin-top: 8px;
+      background: var(--accent);
+      color: #fff;
+      border-radius: 100px;
       text-align: center;
-      margin-bottom: var(--space-xl);
+      padding: 14px;
+      font-size: 15px;
     }
 
-    .section-header .label {
-      margin-bottom: 12px;
-    }
-
-    .section-header h2 {
-      margin-bottom: 16px;
-    }
-
-    .section-header p {
-      font-size: 1.05rem;
-      color: var(--color-muted);
-      max-width: 540px;
-      margin: 0 auto;
-      line-height: 1.7;
-    }
-
-    /* ============================================================
-       RESPONSIVE
-    ============================================================ */
-    @media (max-width: 1024px) {
-      .hero-grid,
-      .simulator-wrap { grid-template-columns: 1fr; }
-      .hero-visual { display: none; }
-      .grid-4, .steps-grid { grid-template-columns: repeat(2, 1fr); }
-      .steps-grid::before { display: none; }
-      .footer-grid { grid-template-columns: 1fr 1fr; }
-      .oferta-card { padding: 36px 28px; }
-      .form-card { padding: 32px 24px; }
-    }
-
+    /* ─── RESPONSIVE ──────────────────────────────────── */
     @media (max-width: 768px) {
-      :root {
-        --space-xl: 56px;
-        --space-xxl: 80px;
+      /* Nav */
+      nav { padding: 0 20px; }
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+
+      /* Typography */
+      h1 { letter-spacing: -1px; }
+      h2 { letter-spacing: -0.5px; }
+
+      /* Sections */
+      section { padding: 64px 20px; }
+      #hero { padding: 100px 20px 64px; }
+
+      /* Hero stats — 2x2 grid en mobile */
+      .hero-stats {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 24px;
+        width: 100%;
+        max-width: 320px;
       }
+      .stat-num { font-size: 32px; }
 
-      .nav-links, .nav-cta .btn-secondary { display: none; }
-      .nav-toggle { display: block; }
+      /* Services — sin span 2 en mobile */
+      .services-grid { grid-template-columns: 1fr; gap: 16px; }
+      .service-card { padding: 32px 24px; }
+      .service-card.featured { grid-column: span 1; }
+      .featured-inner { flex-direction: column; gap: 32px; }
+      .featured-right { grid-template-columns: 1fr 1fr; }
+      .metric-num { font-size: 32px; }
 
-      .grid-2, .grid-3, .testimonios-grid,
-      .security-grid, .form-grid-2 { grid-template-columns: 1fr; }
+      /* Casos */
+      .casos-grid { grid-template-columns: 1fr; gap: 16px; }
+      .caso-card { padding: 28px 24px; }
+      .caso-result { font-size: 40px; }
 
-      .grid-4, .steps-grid { grid-template-columns: 1fr 1fr; }
+      /* Consultoría */
+      .consult-wrap { gap: 48px; }
+      .consult-visual { padding: 28px 20px; }
+      /* Funnel labels más cortos en mobile */
+      .funnel-stage { padding: 12px 14px; }
+      .funnel-label { font-size: 11px; }
+      .funnel-pct { font-size: 11px; }
+      /* Forzar ancho completo en funnel mobile */
+      .funnel-stage:nth-child(2),
+      .funnel-stage:nth-child(3),
+      .funnel-stage:nth-child(4),
+      .funnel-stage:nth-child(5) { width: 100%; }
 
-      .hero-stats { gap: var(--space-md); }
+      /* Nosotros */
+      .nosotros-wrap { gap: 40px; }
+      .values-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
+      .value-item { padding: 20px 16px; }
 
-      .trust-bar-inner { gap: var(--space-md); }
+      /* Blog */
+      .blog-grid { grid-template-columns: 1fr; gap: 16px; }
 
-      .footer-grid { grid-template-columns: 1fr; }
-      .footer-bottom { flex-direction: column; text-align: center; }
+      /* Contacto */
+      .contact-wrap { gap: 48px; }
+      .contact-info p { font-size: 16px; margin-bottom: 28px; }
+      .form-row { grid-template-columns: 1fr; }
+      .submit-btn { width: 100%; text-align: center; }
 
-      .sticky-cta { display: block; }
+      /* Footer */
+      .footer-top { gap: 32px; }
+      .footer-bottom { flex-direction: column; text-align: center; gap: 8px; }
 
-      body { padding-bottom: 88px; }
+      /* Services header */
+      .services-header { flex-direction: column; align-items: flex-start; }
 
-      .oferta-benefits { gap: 8px; }
+      /* Section label + h2 + link row */
+      #blog .reveal { flex-direction: column; align-items: flex-start; gap: 16px; }
     }
 
-    @media (max-width: 480px) {
-      .hero-actions { flex-direction: column; }
-      .hero-actions .btn { width: 100%; text-align: center; }
-      .grid-4, .steps-grid { grid-template-columns: 1fr; }
+    /* Tablet intermedio */
+    @media (min-width: 769px) and (max-width: 1024px) {
+      .services-grid { grid-template-columns: 1fr 1fr; }
+      .service-card.featured { grid-column: span 2; }
+      .casos-grid { grid-template-columns: 1fr 1fr; }
+      .blog-grid { grid-template-columns: 1fr 1fr; }
+      nav { padding: 0 32px; }
+      .nav-links { gap: 20px; }
+    }
+
+    /* Safari-specific fixes */
+    @supports (-webkit-touch-callout: none) {
+      .hero-grid { -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 40%, black 20%, transparent 100%); }
+      .btn-primary, .btn-secondary { -webkit-appearance: none; }
     }
   </style>
 </head>
-
 <body>
 
-  <!-- ============================================================
-       NAVBAR
-  ============================================================ -->
-  <nav id="navbar" role="navigation" aria-label="Navegación principal">
-    <div class="container">
-      <div class="nav-inner">
-        <a href="#" class="nav-logo" aria-label="Inicio">Crédito<span>Ya</span></a>
-        <ul class="nav-links">
-          <li><a href="#como-funciona">Cómo funciona</a></li>
-          <li><a href="#simulador">Simular crédito</a></li>
-          <li><a href="#faq">Preguntas frecuentes</a></li>
-          <li><a href="#seguridad">Seguridad</a></li>
+<!-- ─── NAV ──────────────────────────────────────────── -->
+<nav>
+  <a href="#" class="nav-logo">i<span>Data</span>sol</a>
+  <ul class="nav-links">
+    <li><a href="#servicios">Servicios</a></li>
+    <li><a href="#casos">Casos</a></li>
+    <li><a href="#consultoria">Consultoría</a></li>
+    <li><a href="#nosotros">Nosotros</a></li>
+    <li><a href="#blog">Blog</a></li>
+    <li><a href="#contacto" class="nav-cta">Hablar con un experto</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Menú">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- Mobile menu -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#servicios" onclick="closeMenu()">Servicios</a>
+  <a href="#casos" onclick="closeMenu()">Casos</a>
+  <a href="#consultoria" onclick="closeMenu()">Consultoría</a>
+  <a href="#nosotros" onclick="closeMenu()">Nosotros</a>
+  <a href="#blog" onclick="closeMenu()">Blog</a>
+  <a href="#contacto" onclick="closeMenu()">Hablar con un experto</a>
+</div>
+
+<!-- ─── HERO ──────────────────────────────────────────── -->
+<section id="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-badge">Marketing Directo · Argentina</div>
+  <h1>Datos precisos.<br><em>Resultados reales.</em></h1>
+  <p class="hero-sub">
+    Bases de datos geolocalizadas, campañas de email y WhatsApp, y consultoría especializada en conversión para empresas que quieren crecer.
+  </p>
+  <div class="hero-actions">
+    <a href="#contacto" class="btn-primary">Solicitar una demo</a>
+    <a href="#servicios" class="btn-secondary">Ver servicios →</a>
+  </div>
+  <div class="hero-stats">
+    <div class="stat">
+      <div class="stat-num">+5M<span>.</span></div>
+      <div class="stat-label">Registros activos</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">98<span>%</span></div>
+      <div class="stat-label">Tasa de entrega</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">+300<span>.</span></div>
+      <div class="stat-label">Clientes B2B</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">3x<span>.</span></div>
+      <div class="stat-label">CR promedio</div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── LOGOS ──────────────────────────────────────────── -->
+<div id="logos">
+  <div class="container">
+    <p class="logos-label">Empresas que confían en iDatasol</p>
+    <div class="logos-row">
+      <span class="logo-pill">Geotec</span>
+      <span class="logo-pill">Marketing Directo Uomo</span>
+      <span class="logo-pill">LandingCase</span>
+    </div>
+  </div>
+</div>
+
+<!-- ─── SERVICIOS ──────────────────────────────────────── -->
+<section id="servicios">
+  <div class="container">
+    <div class="services-header">
+      <div>
+        <p class="section-label">Servicios</p>
+        <h2>Todo lo que necesitás<br>para <em>llegar a quien importa</em></h2>
+      </div>
+      <a href="#contacto" class="btn-secondary">Ver todos →</a>
+    </div>
+
+    <div class="services-grid">
+
+      <!-- FEATURED -->
+      <div class="service-card featured reveal">
+        <div class="featured-inner">
+          <div class="featured-left">
+            <div class="service-icon">🗄️</div>
+            <h3>Bases de Datos & Registros Geolocalizados</h3>
+            <p>Accedé a millones de contactos B2B segmentados por industria, zona geográfica, tamaño de empresa y perfil de decisor. Datos actualizados, validados y listos para activar.</p>
+            <div class="service-tags">
+              <span class="tag">Geolocalización por CABA y GBA</span>
+              <span class="tag">Filtros por industria</span>
+              <span class="tag">Decisores clave</span>
+              <span class="tag">Exportación CSV / API</span>
+            </div>
+          </div>
+          <div class="featured-right">
+            <div class="metric"><div class="metric-num">+5M<span>.</span></div><div class="metric-label">Registros en base</div></div>
+            <div class="metric"><div class="metric-num">24h<span>.</span></div><div class="metric-label">Entrega de listas</div></div>
+            <div class="metric"><div class="metric-num">98<span>%</span></div><div class="metric-label">Tasa de validez</div></div>
+            <div class="metric"><div class="metric-num">50+<span>.</span></div><div class="metric-label">Segmentos disponibles</div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- EMAIL -->
+      <div class="service-card reveal">
+        <div class="service-icon">📧</div>
+        <h3>Campañas de Email Marketing</h3>
+        <p>Diseño, ejecución y optimización de campañas masivas de email con foco en entregabilidad, personalización y trazabilidad de resultados en tiempo real.</p>
+        <div class="service-tags">
+          <span class="tag">Diseño HTML</span>
+          <span class="tag">A/B Testing</span>
+          <span class="tag">Reportes en tiempo real</span>
+        </div>
+      </div>
+
+      <!-- WHATSAPP -->
+      <div class="service-card reveal">
+        <div class="service-icon">💬</div>
+        <h3>Campañas de WhatsApp</h3>
+        <p>Alcanzá a tus prospectos por el canal de mayor apertura. Mensajes personalizados, automatizados y con respuesta gestionada para maximizar la conversión.</p>
+        <div class="service-tags">
+          <span class="tag">API oficial</span>
+          <span class="tag">Automatización</span>
+          <span class="tag">+95% tasa de apertura</span>
+        </div>
+      </div>
+
+      <!-- INVESTIGACION -->
+      <div class="service-card reveal">
+        <div class="service-icon">🔬</div>
+        <h3>Investigación de Mercado para Crecimiento</h3>
+        <p>Estudios cuantitativos y cualitativos orientados a identificar oportunidades reales de crecimiento. Insights accionables para tomar mejores decisiones comerciales.</p>
+        <div class="service-tags">
+          <span class="tag">Análisis competitivo</span>
+          <span class="tag">Mapeo de demanda</span>
+          <span class="tag">Informe ejecutivo</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ─── CASOS ──────────────────────────────────────────── -->
+<section id="casos">
+  <div class="container">
+    <div class="reveal">
+      <p class="section-label">Casos de éxito</p>
+      <h2>Números que<br><em>hablan solos</em></h2>
+      <p class="section-intro">Resultados reales de empresas que eligieron iDatasol para potenciar su marketing directo.</p>
+    </div>
+
+    <div class="casos-grid">
+      <div class="caso-card reveal">
+        <div class="caso-industry">Sector Financiero</div>
+        <div class="caso-result">3.2x<span>.</span></div>
+        <p class="caso-desc">Aumento en la tasa de conversión mediante segmentación por perfil financiero y campaña de nurturing en 3 etapas vía email + WhatsApp.</p>
+      </div>
+      <div class="caso-card reveal">
+        <div class="caso-industry">Real Estate</div>
+        <div class="caso-result">+48<span>%</span></div>
+        <p class="caso-desc">Incremento en leads calificados para desarrollos inmobiliarios en CABA usando bases geolocalizadas y retargeting multicanal.</p>
+      </div>
+      <div class="caso-card reveal">
+        <div class="caso-industry">Educación B2B</div>
+        <div class="caso-result">-60<span>%</span></div>
+        <p class="caso-desc">Reducción en el costo de adquisición de nuevos alumnos corporativos mediante campañas de email segmentadas a directivos de RRHH.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── CONSULTORIA ────────────────────────────────────── -->
+<section id="consultoria">
+  <div class="container">
+    <div class="consult-wrap">
+      <div class="consult-text reveal">
+        <p class="section-label">Consultoría</p>
+        <h2>Maximizamos tu<br><em>tasa de conversión</em></h2>
+        <p class="section-intro">Especialistas en retargeting, nurturing y optimización de funnels para que cada lead valga más.</p>
+
+        <div class="consult-steps">
+          <div class="step">
+            <span class="step-num">01</span>
+            <div class="step-content">
+              <h4>Diagnóstico del funnel</h4>
+              <p>Analizamos tus procesos actuales, identificamos los cuellos de botella y definimos los KPIs de conversión más relevantes para tu negocio.</p>
+            </div>
+          </div>
+          <div class="step">
+            <span class="step-num">02</span>
+            <div class="step-content">
+              <h4>Estrategia de retargeting</h4>
+              <p>Diseñamos flujos de comunicación para recuperar y activar prospectos que no convirtieron en el primer contacto.</p>
+            </div>
+          </div>
+          <div class="step">
+            <span class="step-num">03</span>
+            <div class="step-content">
+              <h4>Nurturing automatizado</h4>
+              <p>Creamos secuencias de contenido personalizadas que acompañan al prospecto en cada etapa del ciclo de compra.</p>
+            </div>
+          </div>
+          <div class="step">
+            <span class="step-num">04</span>
+            <div class="step-content">
+              <h4>Medición y optimización continua</h4>
+              <p>Reportes ejecutivos semanales con análisis de resultados y ajustes iterativos para mejorar el CR de forma constante.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="consult-visual reveal">
+        <p style="font-size:13px;font-weight:600;color:var(--ink-muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:28px;">Funnel de conversión optimizado</p>
+        <div class="funnel">
+          <div class="funnel-stage"><span class="funnel-label">Awareness / Base de datos</span><span class="funnel-pct">100%</span></div>
+          <div class="funnel-stage"><span class="funnel-label">Primer contacto</span><span class="funnel-pct">72%</span></div>
+          <div class="funnel-stage"><span class="funnel-label">Interacción</span><span class="funnel-pct">45%</span></div>
+          <div class="funnel-stage"><span class="funnel-label">Calificación</span><span class="funnel-pct">28%</span></div>
+          <div class="funnel-stage"><span class="funnel-label">Conversión</span><span class="funnel-pct">14%</span></div>
+        </div>
+        <p style="font-size:12px;color:var(--ink-muted);margin-top:20px;">* Conversión promedio de clientes iDatasol con consultoría activa</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── NOSOTROS ───────────────────────────────────────── -->
+<section id="nosotros">
+  <div class="container">
+    <div class="nosotros-wrap">
+      <div class="nosotros-text reveal">
+        <p class="section-label">Sobre iDatasol</p>
+        <h2>Datos con<br><em>propósito estratégico</em></h2>
+        <p>Somos una empresa argentina especializada en soluciones de marketing directo para el mercado B2B. Combinamos tecnología de datos con expertise en campañas de conversión para ayudar a las empresas a crecer de forma inteligente y medible.</p>
+        <p>Nuestro equipo integra analistas de datos, estrategas de marketing y especialistas en canales digitales con experiencia probada en los principales mercados de Argentina.</p>
+        <div style="margin-top:40px;">
+          <a href="#contacto" class="btn-primary">Conocé al equipo →</a>
+        </div>
+      </div>
+      <div class="values-grid reveal">
+        <div class="value-item">
+          <div class="value-icon">🎯</div>
+          <h4>Precisión</h4>
+          <p>Datos validados y segmentados para que cada impacto llegue exactamente donde debe.</p>
+        </div>
+        <div class="value-item">
+          <div class="value-icon">📊</div>
+          <h4>Transparencia</h4>
+          <p>Reportes claros con métricas reales. Sin opacidad, sin promesas vacías.</p>
+        </div>
+        <div class="value-item">
+          <div class="value-icon">⚡</div>
+          <h4>Velocidad</h4>
+          <p>Activación de campañas en menos de 48 horas desde el briefing.</p>
+        </div>
+        <div class="value-item">
+          <div class="value-icon">🔄</div>
+          <h4>Mejora continua</h4>
+          <p>Optimización iterativa con foco en maximizar el retorno de cada peso invertido.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── BLOG ───────────────────────────────────────────── -->
+<section id="blog">
+  <div class="container">
+    <div class="reveal" style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:24px;">
+      <div>
+        <p class="section-label">Blog & Recursos</p>
+        <h2>Insights para<br><em>tomar mejores decisiones</em></h2>
+      </div>
+      <a href="#" class="btn-secondary">Ver todos →</a>
+    </div>
+
+    <div class="blog-grid">
+      <article class="post-card reveal">
+        <div class="post-thumb t1">📧</div>
+        <div class="post-body">
+          <p class="post-cat">Email Marketing</p>
+          <h3>Cómo mejorar tu tasa de apertura en campañas B2B en Argentina</h3>
+          <p>Las mejores prácticas de asunto, sender y timing para maximizar la apertura en el mercado local.</p>
+        </div>
+        <div class="post-footer"><span>5 min de lectura</span><span>Marzo 2025</span></div>
+      </article>
+      <article class="post-card reveal">
+        <div class="post-thumb t2">💬</div>
+        <div class="post-body">
+          <p class="post-cat">WhatsApp Marketing</p>
+          <h3>WhatsApp como canal B2B: oportunidades y límites legales en Argentina</h3>
+          <p>Todo lo que necesitás saber antes de activar campañas masivas por WhatsApp Business API.</p>
+        </div>
+        <div class="post-footer"><span>7 min de lectura</span><span>Febrero 2025</span></div>
+      </article>
+      <article class="post-card reveal">
+        <div class="post-thumb t3">🔬</div>
+        <div class="post-body">
+          <p class="post-cat">Investigación de Mercado</p>
+          <h3>Por qué el dato geolocalizado cambia la ecuación del marketing directo</h3>
+          <p>Cómo la segmentación geográfica impacta en las tasas de conversión en campañas de captación.</p>
+        </div>
+        <div class="post-footer"><span>6 min de lectura</span><span>Enero 2025</span></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ─── CONTACTO ───────────────────────────────────────── -->
+<section id="contacto">
+  <div class="container">
+    <div class="reveal">
+      <p class="section-label">Contacto</p>
+      <h2>Hablemos de<br><em>tu próxima campaña</em></h2>
+    </div>
+
+    <div class="contact-wrap">
+      <div class="contact-info reveal">
+        <p>Contanos tu desafío comercial y en menos de 24 horas el <strong style="color:#fff">Equipo iData</strong> te propone una solución concreta.</p>
+        <div class="contact-channels">
+          <a href="mailto:hola@idatasol.com" class="channel">
+            <span class="channel-icon">📧</span>
+            <div>
+              <div class="channel-label">hola@idatasol.com</div>
+              <div class="channel-sub">Respondemos en menos de 4 horas hábiles</div>
+            </div>
+          </a>
+          <a href="https://wa.me/5491133848183" class="channel">
+            <span class="channel-icon">💬</span>
+            <div>
+              <div class="channel-label">+54 9 11 3384-8183</div>
+              <div class="channel-sub">Lunes a viernes, 9 a 18 hs</div>
+            </div>
+          </a>
+          <a href="#" class="channel">
+            <span class="channel-icon">📍</span>
+            <div>
+              <div class="channel-label">Ciudad de Buenos Aires</div>
+              <div class="channel-sub">Servicio para todo el país</div>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <form class="contact-form reveal" action="https://formspree.io/f/xjgjkpgy" method="POST">
+        <div class="form-row">
+          <div class="field">
+            <label for="nombre">Nombre</label>
+            <input id="nombre" name="nombre" type="text" placeholder="Tu nombre" required />
+          </div>
+          <div class="field">
+            <label for="empresa">Empresa</label>
+            <input id="empresa" name="empresa" type="text" placeholder="Tu empresa" required />
+          </div>
+        </div>
+        <div class="field">
+          <label for="email">Email corporativo</label>
+          <input id="email" name="email" type="email" placeholder="nombre@empresa.com" required />
+        </div>
+        <div class="field">
+          <label for="servicio">¿Qué necesitás?</label>
+          <select id="servicio" name="servicio">
+            <option value="">Seleccioná un servicio</option>
+            <option>Bases de datos / Registros</option>
+            <option>Campaña de Email Marketing</option>
+            <option>Campaña de WhatsApp</option>
+            <option>Consultoría en Conversión</option>
+            <option>Investigación de Mercado</option>
+            <option>Servicio integral</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="mensaje">Contanos tu desafío</label>
+          <textarea id="mensaje" name="mensaje" rows="4" placeholder="¿Cuál es tu objetivo principal y en qué mercado operás?"></textarea>
+        </div>
+        <button type="submit" class="submit-btn">Enviar consulta →</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FOOTER ─────────────────────────────────────────── -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="#" class="nav-logo">i<span>Data</span>sol</a>
+        <p>Datos precisos para decisiones inteligentes. Marketing directo B2B en Argentina.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Servicios</h5>
+        <ul>
+          <li><a href="#servicios">Bases de Datos</a></li>
+          <li><a href="#servicios">Email Marketing</a></li>
+          <li><a href="#servicios">WhatsApp Marketing</a></li>
+          <li><a href="#consultoria">Consultoría</a></li>
+          <li><a href="#servicios">Investigación de Mercado</a></li>
         </ul>
-        <div class="nav-cta">
-          <a href="#solicitar" class="btn btn-secondary" style="padding:12px 24px;font-size:0.9rem;">Iniciar sesión</a>
-          <a href="#solicitar" class="btn btn-primary" style="padding:12px 24px;font-size:0.9rem;">Pedí tu crédito</a>
-        </div>
-        <button class="nav-toggle" aria-label="Abrir menú" onclick="toggleMenu()">
-          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-            <path d="M3 12h18M3 6h18M3 18h18"/>
-          </svg>
-        </button>
+      </div>
+      <div class="footer-col">
+        <h5>Empresa</h5>
+        <ul>
+          <li><a href="#nosotros">Sobre nosotros</a></li>
+          <li><a href="#casos">Casos de éxito</a></li>
+          <li><a href="#blog">Blog</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Legal</h5>
+        <ul>
+          <li><a href="#">Política de privacidad</a></li>
+          <li><a href="#">Términos de uso</a></li>
+          <li><a href="#">Protección de datos</a></li>
+        </ul>
       </div>
     </div>
-  </nav>
-
-  <!-- ============================================================
-       HERO SECTION
-  ============================================================ -->
-  <section id="hero" aria-label="Sección principal">
-    <div class="glow-bg glow-1"></div>
-    <div class="glow-bg glow-2"></div>
-    <div class="container">
-      <div class="hero-grid">
-
-        <!-- Copy lado izquierdo -->
-        <div class="hero-content">
-          <div class="hero-eyebrow">
-            <div class="badge badge-green">
-              <span class="dot"></span>
-              Acreditación inmediata
-            </div>
-          </div>
-
-          <h1 class="display-xl hero-title">
-            Tu plata,<br>
-            <span class="highlight">cuando<br>la necesitás</span>
-          </h1>
-
-          <p class="hero-subtitle">
-            Préstamos de $50.000 a $500.000 con acreditación el mismo día. Sin papelerío, sin vueltas, 100% online.
-          </p>
-
-          <div class="hero-actions">
-            <a href="#solicitar" class="btn btn-primary btn-large">
-              <span>Pedí tu crédito</span>
-              <span>→</span>
-            </a>
-            <a href="#simulador" class="btn btn-secondary btn-large">
-              Simular monto
-            </a>
-          </div>
-
-          <div class="hero-stats">
-            <div class="hero-stat">
-              <div class="value">+15.000</div>
-              <div class="desc">personas ayudadas</div>
-            </div>
-            <div class="hero-stat">
-              <div class="value">2 min</div>
-              <div class="desc">para solicitar</div>
-            </div>
-            <div class="hero-stat">
-              <div class="value">24hs</div>
-              <div class="desc">acreditación máx.</div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Visual lado derecho — Simulador Hero -->
-        <div class="hero-visual">
-          <div class="float-badge float-badge-1">
-            ✅ <span>Pre-aprobado al instante</span>
-          </div>
-          <div class="hero-card-main">
-            <div class="credit-display">
-              <div class="credit-label">Cuánto necesitás</div>
-              <div class="credit-amount" id="hero-amount">$150.000</div>
-              <div class="credit-label">en pesos argentinos</div>
-            </div>
-            <div class="slider-wrap">
-              <label>
-                <span>$50.000</span>
-                <span>$500.000</span>
-              </label>
-              <input type="range" min="50000" max="500000" step="5000" value="150000"
-                     id="hero-slider" aria-label="Seleccioná el monto" />
-            </div>
-            <div class="credit-info-row">
-              <div class="credit-info-item">
-                <div class="val" id="hero-cuota">$10.200</div>
-                <div class="lbl">Cuota estimada</div>
-              </div>
-              <div class="credit-info-item">
-                <div class="val">12 cuotas</div>
-                <div class="lbl">Plazo máximo</div>
-              </div>
-            </div>
-            <a href="#solicitar" class="btn btn-primary btn-full" style="margin-top:20px;">
-              Solicitar ahora →
-            </a>
-          </div>
-          <div class="float-badge float-badge-2">
-            🔒 <span>100% seguro</span>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ============================================================
-       TRUST BAR
-  ============================================================ -->
-  <div id="trust-bar" aria-label="Indicadores de confianza">
-    <div class="container">
-      <div class="trust-bar-inner">
-        <div class="trust-item">
-          <span class="trust-icon">🏦</span>
-          <span>Supervisado por el BCRA</span>
-        </div>
-        <div class="trust-item">
-          <span class="trust-icon">🔒</span>
-          <span>Datos protegidos SSL 256-bit</span>
-        </div>
-        <div class="trust-item">
-          <span class="trust-icon">⚡</span>
-          <span>Resolución en 24 horas</span>
-        </div>
-        <div class="trust-item">
-          <span class="trust-icon">📱</span>
-          <span>100% digital, sin turnos</span>
-        </div>
-        <div class="trust-item">
-          <span class="trust-icon">⭐</span>
-          <span>4.8/5 · +2.000 reseñas</span>
-        </div>
-      </div>
+    <div class="footer-bottom">
+      <p>© 2025 iDatasol. Todos los derechos reservados.</p>
+      <p>Hecho en <a href="#">Ciudad de Buenos Aires, Argentina 🇦🇷</a></p>
     </div>
   </div>
+</footer>
 
-  <!-- ============================================================
-       BENEFICIOS
-  ============================================================ -->
-  <section id="beneficios" class="section" aria-label="Beneficios">
-    <div class="container">
-      <div class="section-header">
-        <div class="label">Por qué elegirnos</div>
-        <h2 class="display-md">Rápido, simple y sin sorpresas</h2>
-        <p>Diseñamos cada paso para que puedas resolver tu urgencia sin perder tiempo ni completar papeles interminables.</p>
-      </div>
-      <div class="grid-3">
-        <div class="card benefit-card fade-up">
-          <div class="card-icon icon-bg-blue">⚡</div>
-          <h3>Acreditación el mismo día</h3>
-          <p>Una vez aprobado tu crédito, el dinero cae en tu cuenta en cuestión de horas. Sin esperas innecesarias.</p>
-        </div>
-        <div class="card benefit-card fade-up">
-          <div class="card-icon icon-bg-green">📋</div>
-          <h3>Sin papelerío</h3>
-          <p>Solo tu DNI y tu cuenta bancaria. Nada de sueldos de recibo, garantías ni avales. El proceso es 100% online.</p>
-        </div>
-        <div class="card benefit-card fade-up">
-          <div class="card-icon icon-bg-purple">💰</div>
-          <h3>Cuotas que se adaptan</h3>
-          <p>Elegís el monto y las cuotas que te convienen. Calculá en segundos lo que vas a pagar, sin letras chicas.</p>
-        </div>
-        <div class="card benefit-card fade-up">
-          <div class="card-icon icon-bg-orange">🛡️</div>
-          <h3>Cero costos ocultos</h3>
-          <p>Lo que te mostramos en el simulador es lo que pagás. Transparencia total, sin cargos inesperados.</p>
-        </div>
-        <div class="card benefit-card fade-up">
-          <div class="card-icon icon-bg-blue">📱</div>
-          <h3>Desde tu celular</h3>
-          <p>Solicitá, seguí tu crédito y manejá todo desde donde estés. No hace falta que vayas a ningún lado.</p>
-        </div>
-        <div class="card benefit-card fade-up">
-          <div class="card-icon icon-bg-green">🤝</div>
-          <h3>Atención real</h3>
-          <p>Si tenés dudas, te atendemos. Personas reales listos para ayudarte a resolver lo que necesitás.</p>
-        </div>
-      </div>
-    </div>
-  </section>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  // Hamburger menu
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('open');
+    mobileMenu.classList.toggle('open');
+  });
+  function closeMenu() {
+    hamburger.classList.remove('open');
+    mobileMenu.classList.remove('open');
+  }
+  // Close menu on scroll
+  window.addEventListener('scroll', closeMenu, { passive: true });
 
-  <!-- ============================================================
-       CÓMO FUNCIONA
-  ============================================================ -->
-  <section id="como-funciona" class="section" aria-label="Cómo funciona">
-    <div class="container">
-      <div class="section-header">
-        <div class="label">Proceso</div>
-        <h2 class="display-md">4 pasos y listo</h2>
-        <p>Sin turnos, sin filas, sin papelerío. Todo desde tu celular o computadora, en minutos.</p>
-      </div>
-      <div class="steps-grid">
-        <div class="card step-card fade-up">
-          <div class="step-number">1</div>
-          <h3>Simulá tu crédito</h3>
-          <p>Elegí el monto y las cuotas. Ves en segundos lo que vas a pagar sin ningún compromiso.</p>
-        </div>
-        <div class="card step-card fade-up">
-          <div class="step-number">2</div>
-          <h3>Completá tus datos</h3>
-          <p>Solo DNI y datos bancarios. 2 minutos. Fácil y seguro.</p>
-        </div>
-        <div class="card step-card fade-up">
-          <div class="step-number">3</div>
-          <h3>Recibí la aprobación</h3>
-          <p>Analizamos tu solicitud y te respondemos rápido. Sin vueltas ni esperas largas.</p>
-        </div>
-        <div class="card step-card fade-up">
-          <div class="step-number">4</div>
-          <h3>El dinero en tu cuenta</h3>
-          <p>Una vez aprobado, acreditamos el dinero el mismo día. Así de simple.</p>
-        </div>
-      </div>
-    </div>
-  </section>
+  // Scroll reveal — robusto para hash navigation y Safari
+  const reveals = document.querySelectorAll('.reveal');
 
-  <!-- ============================================================
-       SIMULADOR DE CRÉDITO
-  ============================================================ -->
-  <section id="simulador" class="section section--lg" aria-label="Simulador de crédito">
-    <div class="glow-bg glow-1" style="opacity:0.6;"></div>
-    <div class="container" style="position:relative;z-index:1;">
-      <div class="simulator-wrap">
-
-        <div>
-          <div class="label" style="margin-bottom:12px;">Simulador</div>
-          <h2 class="display-md" style="margin-bottom:16px;">Calculá tu cuota antes de pedir</h2>
-          <p style="color:var(--color-muted);font-size:1.05rem;line-height:1.7;margin-bottom:var(--space-lg);">
-            Jugá con el monto y las cuotas hasta encontrar lo que te queda cómodo. Sin compromiso, sin registrarte.
-          </p>
-          <div class="badge badge-blue" style="margin-bottom:var(--space-sm);">
-            ✔ Resultado al instante
-          </div><br>
-          <div class="badge badge-green">
-            ✔ Sin impacto en tu historial crediticio
-          </div>
-        </div>
-
-        <div class="simulator-card">
-          <div class="sim-form-group">
-            <label>¿Cuánto necesitás? <span id="sim-monto-label">$200.000</span></label>
-            <input type="range" min="50000" max="500000" step="5000" value="200000"
-                   id="sim-slider" aria-label="Monto del crédito" />
-          </div>
-          <div class="sim-form-group" style="margin-top:var(--space-sm);">
-            <label>¿En cuántas cuotas? <span id="sim-cuotas-label">12 cuotas</span></label>
-            <input type="range" min="3" max="24" step="3" value="12"
-                   id="sim-cuotas" aria-label="Cantidad de cuotas" />
-          </div>
-          <div class="sim-result">
-            <div class="sim-result-row">
-              <span class="key">Monto solicitado</span>
-              <span class="val" id="sim-r-monto">$200.000</span>
-            </div>
-            <div class="sim-result-row">
-              <span class="key">Cantidad de cuotas</span>
-              <span class="val" id="sim-r-cuotas">12 cuotas</span>
-            </div>
-            <div class="sim-result-row">
-              <span class="key">TNA referencial</span>
-              <span class="val">120%</span>
-            </div>
-            <div class="sim-result-row">
-              <span class="key">Cuota estimada</span>
-              <span class="val highlight" id="sim-r-cuota">$27.300</span>
-            </div>
-          </div>
-          <a href="#solicitar" class="btn btn-primary btn-full" style="margin-top:var(--space-sm);">
-            Quiero este crédito →
-          </a>
-          <p style="font-size:0.75rem;color:var(--color-muted);text-align:center;margin-top:10px;">
-            *Valores referenciales. La cuota final se informa antes de confirmar.
-          </p>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ============================================================
-       TESTIMONIOS
-  ============================================================ -->
-  <section id="testimonios" class="section" aria-label="Opiniones de clientes">
-    <div class="container">
-      <div class="section-header">
-        <div class="label">Lo que dicen nuestros clientes</div>
-        <h2 class="display-md">+15.000 personas ya resolvieron su urgencia</h2>
-      </div>
-      <div class="testimonios-grid">
-        <div class="card testimonio-card fade-up">
-          <div class="stars">★★★★★</div>
-          <p class="testimonio-text">"Necesitaba plata urgente para arreglar el auto y lo resolví ese mismo día. Jamás pensé que fuera tan fácil. En serio, sin papelería ni nada."</p>
-          <div class="testimonio-author">
-            <div class="avatar av-1">MB</div>
-            <div class="author-info">
-              <div class="name">Marcos B.</div>
-              <div class="role">Empleado, Buenos Aires</div>
-            </div>
-          </div>
-        </div>
-        <div class="card testimonio-card fade-up">
-          <div class="stars">★★★★★</div>
-          <p class="testimonio-text">"Me salvó cuando tuve un gasto médico inesperado. El proceso fue clarito, sin letra chica. En pocas horas tenía el dinero en mi cuenta."</p>
-          <div class="testimonio-author">
-            <div class="avatar av-2">LC</div>
-            <div class="author-info">
-              <div class="name">Laura C.</div>
-              <div class="role">Comerciante, Córdoba</div>
-            </div>
-          </div>
-        </div>
-        <div class="card testimonio-card fade-up">
-          <div class="stars">★★★★☆</div>
-          <p class="testimonio-text">"Lo pedí desde el celu en el colectivo, ja. Me aprobaron rápido y sin complicaciones. Una herramienta muy útil para momentos difíciles."</p>
-          <div class="testimonio-author">
-            <div class="avatar av-3">RP</div>
-            <div class="author-info">
-              <div class="name">Rodrigo P.</div>
-              <div class="role">Docente, Rosario</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============================================================
-       OFERTA IRRESISTIBLE
-  ============================================================ -->
-  <section id="oferta" class="section section--lg" aria-label="Nuestra oferta">
-    <div class="glow-bg" style="width:700px;height:700px;background:radial-gradient(circle,rgba(0,232,122,0.08) 0%,transparent 70%);top:50%;left:50%;transform:translate(-50%,-50%);"></div>
-    <div class="container">
-      <div class="oferta-inner">
-        <div class="oferta-card">
-          <div class="label" style="margin-bottom:12px;">Nuestra oferta</div>
-          <h2 class="display-md" style="margin-bottom:8px;">Crédito con acreditación inmediata</h2>
-          <p style="color:var(--color-muted);max-width:480px;margin:0 auto;">
-            Sin vueltas, sin demoras. El dinero que necesitás llega a tu cuenta el mismo día.
-          </p>
-          <div class="oferta-price">
-            <div class="desde">Desde</div>
-            <div class="amount">$50.000</div>
-            <div class="hasta">hasta $500.000 — en cuotas a tu medida</div>
-          </div>
-          <div class="oferta-benefits">
-            <div class="oferta-benefit"><span class="icon">✓</span> Aprobación en minutos</div>
-            <div class="oferta-benefit"><span class="icon">✓</span> Sin garante</div>
-            <div class="oferta-benefit"><span class="icon">✓</span> Sin recibo de sueldo</div>
-            <div class="oferta-benefit"><span class="icon">✓</span> 100% online</div>
-            <div class="oferta-benefit"><span class="icon">✓</span> Sin costos ocultos</div>
-            <div class="oferta-benefit"><span class="icon">✓</span> Cuotas fijas</div>
-          </div>
-          <a href="#solicitar" class="btn btn-primary btn-large" style="margin-top:var(--space-md);">
-            Pedí tu crédito ahora →
-          </a>
-          <div class="oferta-guarantee">
-            🔒 Si no te aprobamos, no pagás absolutamente nada
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============================================================
-       SEGURIDAD
-  ============================================================ -->
-  <section id="seguridad" class="section" aria-label="Seguridad y confianza">
-    <div class="container">
-      <div class="section-header">
-        <div class="label">Tu seguridad</div>
-        <h2 class="display-md">Tu información está protegida</h2>
-        <p>Cumplimos con todas las normativas vigentes y utilizamos tecnología de nivel bancario para cuidar tus datos.</p>
-      </div>
-      <div class="security-grid">
-        <div class="card security-item fade-up">
-          <span class="security-icon">🔐</span>
-          <div>
-            <h4>Encriptación SSL 256-bit</h4>
-            <p>El mismo nivel de seguridad que usan los bancos. Tus datos viajan cifrados en todo momento.</p>
-          </div>
-        </div>
-        <div class="card security-item fade-up">
-          <span class="security-icon">🏛️</span>
-          <div>
-            <h4>Registrado y supervisado</h4>
-            <p>Operamos bajo las regulaciones del Banco Central de la República Argentina (BCRA).</p>
-          </div>
-        </div>
-        <div class="card security-item fade-up">
-          <span class="security-icon">🛡️</span>
-          <div>
-            <h4>Privacidad de datos</h4>
-            <p>Tus datos personales nunca se comparten con terceros sin tu consentimiento. Cumplimos la Ley 25.326.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============================================================
-       FAQ
-  ============================================================ -->
-  <section id="faq" class="section" aria-label="Preguntas frecuentes">
-    <div class="container">
-      <div class="section-header">
-        <div class="label">FAQ</div>
-        <h2 class="display-md">Tus dudas, resueltas</h2>
-      </div>
-      <div class="faq-list">
-
-        <div class="faq-item">
-          <div class="faq-question" onclick="toggleFaq(this)" role="button" tabindex="0" aria-expanded="false">
-            <span>¿Cuánto tiempo tarda en acreditarse el dinero?</span>
-            <span class="icon">+</span>
-          </div>
-          <div class="faq-answer">
-            <p>Una vez aprobado tu crédito, el dinero se acredita en tu cuenta bancaria el mismo día. En algunos casos puede demorar hasta 24 horas hábiles según el banco receptor.</p>
-          </div>
-        </div>
-
-        <div class="faq-item">
-          <div class="faq-question" onclick="toggleFaq(this)" role="button" tabindex="0" aria-expanded="false">
-            <span>¿Qué documentos necesito para solicitar?</span>
-            <span class="icon">+</span>
-          </div>
-          <div class="faq-answer">
-            <p>Solo necesitás tu DNI vigente y tus datos bancarios (CBU o CVU). No pedimos recibo de sueldo, garante ni ningún otro documento adicional.</p>
-          </div>
-        </div>
-
-        <div class="faq-item">
-          <div class="faq-question" onclick="toggleFaq(this)" role="button" tabindex="0" aria-expanded="false">
-            <span>¿Puedo pedir un crédito si tengo deudas?</span>
-            <span class="icon">+</span>
-          </div>
-          <div class="faq-answer">
-            <p>Analizamos cada caso de forma individual. Tener deudas no significa que automáticamente te rechacemos. Enviá tu solicitud y te respondemos con honestidad.</p>
-          </div>
-        </div>
-
-        <div class="faq-item">
-          <div class="faq-question" onclick="toggleFaq(this)" role="button" tabindex="0" aria-expanded="false">
-            <span>¿Hay costos ocultos?</span>
-            <span class="icon">+</span>
-          </div>
-          <div class="faq-answer">
-            <p>No. Lo que ves en el simulador es lo que pagás. Antes de confirmar el crédito te mostramos el detalle completo: monto, cuotas, TNA y CFT. Sin sorpresas.</p>
-          </div>
-        </div>
-
-        <div class="faq-item">
-          <div class="faq-question" onclick="toggleFaq(this)" role="button" tabindex="0" aria-expanded="false">
-            <span>¿Puedo pagar antes del plazo?</span>
-            <span class="icon">+</span>
-          </div>
-          <div class="faq-answer">
-            <p>Sí. Podés cancelar tu crédito anticipadamente en cualquier momento y solo pagás los intereses generados hasta esa fecha, sin penalidades.</p>
-          </div>
-        </div>
-
-        <div class="faq-item">
-          <div class="faq-question" onclick="toggleFaq(this)" role="button" tabindex="0" aria-expanded="false">
-            <span>¿Es seguro cargar mis datos personales?</span>
-            <span class="icon">+</span>
-          </div>
-          <div class="faq-answer">
-            <p>Totalmente. Usamos encriptación SSL de 256 bits (el mismo nivel que los bancos). Además cumplimos con la Ley de Protección de Datos Personales (Ley 25.326). Tu información está segura con nosotros.</p>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ============================================================
-       FORMULARIO DE SOLICITUD
-  ============================================================ -->
-  <section id="solicitar" class="section section--lg" aria-label="Formulario de solicitud">
-    <div class="glow-bg glow-1"></div>
-    <div class="container" style="position:relative;z-index:1;">
-      <div class="form-wrap">
-        <div class="section-header">
-          <div class="label">Solicitá ahora</div>
-          <h2 class="display-md">Tu crédito en 2 minutos</h2>
-          <p>Completá estos datos y te respondemos rápido. Sin compromiso hasta que vos confirmés.</p>
-        </div>
-
-        <div class="form-card">
-          <div class="form-steps">
-            <div class="form-step-dot active" id="dot-1"></div>
-            <div class="form-step-dot" id="dot-2"></div>
-            <div class="form-step-dot" id="dot-3"></div>
-          </div>
-
-          <div id="form-content">
-            <div class="form-grid-2">
-              <div class="form-group">
-                <label for="nombre">Nombre</label>
-                <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" autocomplete="given-name" />
-                <span class="field-error">Por favor ingresá tu nombre.</span>
-              </div>
-              <div class="form-group">
-                <label for="apellido">Apellido</label>
-                <input type="text" id="apellido" name="apellido" placeholder="Tu apellido" autocomplete="family-name" />
-                <span class="field-error">Por favor ingresá tu apellido.</span>
-              </div>
-            </div>
-
-            <div class="form-group">
-              <label for="email">Email</label>
-              <input type="email" id="email" name="email" placeholder="tucorreo@email.com" autocomplete="email" />
-              <span class="field-error">Ingresá un email válido.</span>
-            </div>
-
-            <div class="form-group">
-              <label for="telefono">Teléfono / WhatsApp</label>
-              <input type="tel" id="telefono" name="telefono" placeholder="11 1234-5678" autocomplete="tel" />
-              <span class="field-error">Ingresá tu número de teléfono.</span>
-            </div>
-
-            <div class="form-grid-2">
-              <div class="form-group">
-                <label for="monto">Monto solicitado</label>
-                <select id="monto" name="monto">
-                  <option value="">Seleccioná</option>
-                  <option>$50.000</option>
-                  <option>$100.000</option>
-                  <option>$150.000</option>
-                  <option>$200.000</option>
-                  <option>$300.000</option>
-                  <option>$400.000</option>
-                  <option>$500.000</option>
-                </select>
-                <span class="field-error">Seleccioná el monto.</span>
-              </div>
-              <div class="form-group">
-                <label for="cuotas">Cuotas</label>
-                <select id="cuotas" name="cuotas">
-                  <option value="">Seleccioná</option>
-                  <option>3 cuotas</option>
-                  <option>6 cuotas</option>
-                  <option>9 cuotas</option>
-                  <option>12 cuotas</option>
-                  <option>18 cuotas</option>
-                  <option>24 cuotas</option>
-                </select>
-                <span class="field-error">Seleccioná las cuotas.</span>
-              </div>
-            </div>
-
-            <button class="btn btn-primary btn-full btn-large" onclick="submitForm()" style="margin-top:8px;">
-              Quiero mi crédito →
-            </button>
-
-            <p class="form-note">
-              🔒 Tus datos están protegidos. No compartimos tu información con nadie.
-            </p>
-          </div>
-
-          <div class="form-success" id="form-success">
-            <span class="success-icon">🎉</span>
-            <h3 class="text-green">¡Solicitud enviada!</h3>
-            <p>Te contactamos en las próximas horas para darte una respuesta. Revisá también tu correo.</p>
-            <a href="#simulador" class="btn btn-secondary" style="margin-top:var(--space-md);">Simular otro monto</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============================================================
-       FOOTER
-  ============================================================ -->
-  <footer id="footer" aria-label="Pie de página">
-    <div class="container">
-      <div class="footer-grid">
-        <div class="footer-brand">
-          <div class="logo">Crédito<span>Ya</span></div>
-          <p>Créditos simples, rápidos y seguros para resolver lo que necesitás, cuando lo necesitás.</p>
-        </div>
-        <div class="footer-col">
-          <h5>Producto</h5>
-          <ul>
-            <li><a href="#como-funciona">Cómo funciona</a></li>
-            <li><a href="#simulador">Simular crédito</a></li>
-            <li><a href="#oferta">Nuestra oferta</a></li>
-            <li><a href="#solicitar">Solicitar crédito</a></li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <h5>Empresa</h5>
-          <ul>
-            <li><a href="#">Acerca de nosotros</a></li>
-            <li><a href="#">Trabaja con nosotros</a></li>
-            <li><a href="#">Blog</a></li>
-            <li><a href="#">Contacto</a></li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <h5>Legal</h5>
-          <ul>
-            <li><a href="#">Términos y condiciones</a></li>
-            <li><a href="#">Política de privacidad</a></li>
-            <li><a href="#">Protección de datos</a></li>
-            <li><a href="#">BCRA</a></li>
-          </ul>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <p>© 2025 CréditoYa. Todos los derechos reservados.</p>
-        <div class="footer-legal">
-          <a href="#">Privacidad</a>
-          <a href="#">Términos</a>
-          <a href="#">Cookies</a>
-        </div>
-      </div>
-    </div>
-  </footer>
-
-  <!-- Sticky CTA mobile -->
-  <div class="sticky-cta" aria-label="Acceso rápido móvil">
-    <a href="#solicitar" class="btn btn-primary btn-full">Pedí tu crédito ahora →</a>
-  </div>
-
-  <!-- ============================================================
-       JAVASCRIPT
-  ============================================================ -->
-  <script>
-    /* ---- NAVBAR scroll ---- */
-    const navbar = document.getElementById('navbar');
-    window.addEventListener('scroll', () => {
-      navbar.classList.toggle('scrolled', window.scrollY > 40);
+  function revealVisible() {
+    reveals.forEach(el => {
+      const rect = el.getBoundingClientRect();
+      const inView = rect.top < window.innerHeight * 0.95 && rect.bottom > 0;
+      if (inView) el.classList.add('visible');
     });
+  }
 
-    /* ---- HERO SLIDER ---- */
-    const heroSlider = document.getElementById('hero-slider');
-    const heroAmount = document.getElementById('hero-amount');
-    const heroCuota  = document.getElementById('hero-cuota');
+  // Disparar en scroll
+  window.addEventListener('scroll', revealVisible, { passive: true });
 
-    function calcCuota(monto, cuotas, tna) {
-      const tm = tna / 12;
-      const cuota = monto * (tm * Math.pow(1 + tm, cuotas)) / (Math.pow(1 + tm, cuotas) - 1);
-      return Math.round(cuota);
-    }
+  // Disparar al cargar (cubre el caso de #contacto directo)
+  window.addEventListener('load', () => {
+    // Pequeño delay para que el browser termine de posicionar el scroll
+    setTimeout(revealVisible, 100);
+  });
 
-    function formatPesos(n) {
-      return '$' + n.toLocaleString('es-AR');
-    }
-
-    heroSlider.addEventListener('input', function() {
-      const v = parseInt(this.value);
-      heroAmount.textContent = formatPesos(v);
-      heroCuota.textContent  = formatPesos(calcCuota(v, 12, 1.2));
-    });
-
-    /* ---- SIMULADOR ---- */
-    const simSlider = document.getElementById('sim-slider');
-    const simCuotas = document.getElementById('sim-cuotas');
-    const simML     = document.getElementById('sim-monto-label');
-    const simCL     = document.getElementById('sim-cuotas-label');
-    const simRM     = document.getElementById('sim-r-monto');
-    const simRC     = document.getElementById('sim-r-cuotas');
-    const simRCuota = document.getElementById('sim-r-cuota');
-
-    function updateSim() {
-      const monto  = parseInt(simSlider.value);
-      const cuotas = parseInt(simCuotas.value);
-      const cuota  = calcCuota(monto, cuotas, 1.2);
-      simML.textContent     = formatPesos(monto);
-      simCL.textContent     = cuotas + ' cuotas';
-      simRM.textContent     = formatPesos(monto);
-      simRC.textContent     = cuotas + ' cuotas';
-      simRCuota.textContent = formatPesos(cuota);
-    }
-
-    simSlider.addEventListener('input', updateSim);
-    simCuotas.addEventListener('input', updateSim);
-    updateSim();
-
-    /* ---- FAQ ACCORDION ---- */
-    function toggleFaq(el) {
-      const item = el.parentElement;
-      const isOpen = item.classList.contains('open');
-      document.querySelectorAll('.faq-item').forEach(i => {
-        i.classList.remove('open');
-        i.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
-      });
-      if (!isOpen) {
-        item.classList.add('open');
-        el.setAttribute('aria-expanded', 'true');
-      }
-    }
-
-    /* Keyboard support para FAQ */
-    document.querySelectorAll('.faq-question').forEach(el => {
-      el.addEventListener('keydown', e => {
-        if (e.key === 'Enter' || e.key === ' ') {
-          e.preventDefault();
-          toggleFaq(el);
+  // También con IntersectionObserver como respaldo
+  if ('IntersectionObserver' in window) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
         }
       });
-    });
+    }, { threshold: 0.05, rootMargin: '0px 0px -40px 0px' });
+    reveals.forEach(el => observer.observe(el));
+  }
 
-    /* ---- FORM SUBMIT ---- */
-    function submitForm() {
-      const fields = ['nombre', 'apellido', 'email', 'telefono', 'monto', 'cuotas'];
-      let valid = true;
-
-      fields.forEach(id => {
-        const el = document.getElementById(id);
-        const isEmpty = !el.value.trim();
-        const isEmailInvalid = id === 'email' && el.value && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(el.value);
-
-        if (isEmpty || isEmailInvalid) {
-          el.classList.add('error');
-          valid = false;
-        } else {
-          el.classList.remove('error');
-        }
-      });
-
-      if (!valid) return;
-
-      // Animación de progress
-      document.getElementById('dot-1').className = 'form-step-dot done';
-      document.getElementById('dot-2').className = 'form-step-dot done';
-      document.getElementById('dot-3').className = 'form-step-dot active';
-
-      setTimeout(() => {
-        document.getElementById('form-content').style.display = 'none';
-        document.getElementById('form-success').style.display = 'block';
-        document.getElementById('dot-3').className = 'form-step-dot done';
-      }, 600);
-    }
-
-    /* ---- INTERSECTION OBSERVER (fade-up) ---- */
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(e => {
-        if (e.isIntersecting) {
-          e.target.classList.add('visible');
-          observer.unobserve(e.target);
-        }
-      });
-    }, { threshold: 0.15 });
-
-    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
-
-    /* ---- MOBILE MENU (simplificado) ---- */
-    function toggleMenu() {
-      // Scroll to solicitar como fallback mobile
-      document.getElementById('solicitar').scrollIntoView({ behavior: 'smooth' });
-    }
-  </script>
-
+  // Nav scroll effect
+  const nav = document.querySelector('nav');
+  window.addEventListener('scroll', () => {
+    nav.style.boxShadow = window.scrollY > 40 ? '0 2px 24px rgba(0,0,0,0.08)' : 'none';
+  }, { passive: true });
+</script>
 </body>
 </html>
